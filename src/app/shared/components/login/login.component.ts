@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { RequestUsarioInterface } from '../../interfaces/usuario/requestUsuario.interface';
 import { map } from 'rxjs';
 import { GlobalUtil } from '../../util/global-util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit{
     private formBuilder: FormBuilder,
     private loginService : LoginService,
     private sweetAlert: SweetAlert,
-    private util: GlobalUtil
+    private util: GlobalUtil,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit{
         next: resp => {
           if (resp) {
             this.sweetAlert.sucess(`Bem vindo ${resp.nome}`);
+            this.router.navigate(['/dashboard'])
           } else {
             this.sweetAlert.error('Usuário/Senha invalidos!');
           }

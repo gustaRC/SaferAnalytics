@@ -1,12 +1,12 @@
-<div class="viewDiv">
-  <p-card styleClass="card-default mt-8">
+<div class="centralizar">
+  <p-card styleClass="card-login mt-8">
     <div class="w-full">
       <h1 class="mb-5" style="text-align: center;">SaferAnalytics</h1>
       <h4 style="text-align: start;">Login</h4>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="ui-g ui-fluid">
-      <div class="col-12 flex flex-column">
+      <div class="ui-g-12 ui-md-12 flex flex-column">
         <label htmlFor="user">Usuário</label>
         <input
         name="user"
@@ -15,7 +15,7 @@
         formControlName="usuario">
       </div>
 
-      <div class="col-12 flex flex-column">
+      <div class="ui-g-12 ui-md-12 flex flex-column mt-2">
         <label for="password">Senha</label>
         <p-password
         [toggleMask]="true"
@@ -24,16 +24,17 @@
         styleClass="w-full"
         formControlName="senha"></p-password>
       </div>
-      <div class="col-12 flex justify-content-end p-0">
+      <div class="ui-g-12 ui-md-12 flex justify-content-end p-0">
         <p-button
         label="Esqueceu a senha?"
         [text]="true"
         size="small"
         severity="danger"
-        (onClick)="enviarEmailRecuperacao()"></p-button>
+        (onClick)="enviarEmailRecuperacao()"
+        styleClass="p-1 mt-2 mb-2"></p-button>
       </div>
 
-      <div class="col-12 mt-3">
+      <div class="ui-g-12 ui-md-12 mt-3">
         <p-button
         label="Entrar"
         styleClass="w-full btn-default"

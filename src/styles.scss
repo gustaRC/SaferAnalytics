@@ -34,10 +34,9 @@ h3, h4 {
   border-color: $azul-2;
 }
 
-.viewDiv {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
+.centralizar {
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .p-inputtext {
@@ -48,9 +47,9 @@ h3, h4 {
   border-color: $verm-erro;
 }
 
-.card-default {
-  width: 30vw;
-  height: 56vh;
+.card-login {
+  width: 25em;
+  // height: 30%;
 }
 
 .swal2-popup.swal2-toast .swal2-title {
@@ -62,4 +61,11 @@ h3, h4 {
 
 .min-h {
   min-height: 10rem !important;
+}
+
+@media (max-width: 600px) {
+  .card-login {
+    transition: all 0.2s;
+    width: 20em;
+  }
 }
