@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import 'primeflex/primeflex.scss';
+@import 'animate.css';
+
+@import './scss/variaveis.scss';
+@import './scss/loader.scss';
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  background-color: $bk-light;
+}
+
+h1, h2 {
+  color: $azul-1;
+}
+
+h3, h4 {
+  color: $azul-escuro;
+}
+
+.p-inputtext:hover {
+  border-color: $azul-2;
+}
+
+.btn-default {
+  background-color: $azul-1;
+  color: white;
+  border-color: $azul-2;
+}
+
+.viewDiv {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.p-inputtext {
+  width: 100% ;
+}
+
+.input-erro {
+  border-color: $verm-erro;
+}
+
+.card-default {
+  width: 30vw;
+  height: 56vh;
+}
+
+.swal2-popup.swal2-toast .swal2-title {
+  margin: 0.4em 0.6em !important;
+  margin-right: 0 !important;
+  font-size: 1.2em !important;
+  font-weight: 700 !important;
+}
+
+.min-h {
+  min-height: 10rem !important;
+}

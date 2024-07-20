@@ -1,0 +1,49 @@
+<div class="viewDiv">
+  <p-card styleClass="card-default mt-8">
+    <div class="w-full">
+      <h1 class="mb-5" style="text-align: center;">SaferAnalytics</h1>
+      <h4 style="text-align: start;">Login</h4>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" class="ui-g ui-fluid">
+      <div class="col-12 flex flex-column">
+        <label htmlFor="user">Usuário</label>
+        <input
+        name="user"
+        pInputText
+        type="text"
+        formControlName="usuario">
+      </div>
+
+      <div class="col-12 flex flex-column">
+        <label for="password">Senha</label>
+        <p-password
+        [toggleMask]="true"
+        name="password"
+        [feedback]="false"
+        styleClass="w-full"
+        formControlName="senha"></p-password>
+      </div>
+      <div class="col-12 flex justify-content-end p-0">
+        <p-button
+        label="Esqueceu a senha?"
+        [text]="true"
+        size="small"
+        severity="danger"
+        (onClick)="enviarEmailRecuperacao()"></p-button>
+      </div>
+
+      <div class="col-12 mt-3">
+        <p-button
+        label="Entrar"
+        styleClass="w-full btn-default"
+        type="submit"
+        [disabled]="!loginForm.valid"
+        ></p-button>
+      </div>
+    </form>
+
+  </p-card>
+
+</div>
+

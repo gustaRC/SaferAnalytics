@@ -1,0 +1,18 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Gustavo Rodrigues",
+      "usuario": "gustavo",
+      "senha": "123",
+      "cargo": "Desenvolvedor"
+    },
+    {
+      "id": "2",
+      "nome": "Alexandro Costa",
+      "user": "alex_costa",
+      "senha": "123",
+      "cargo": "Analista"
+    }
+  ]
+}
