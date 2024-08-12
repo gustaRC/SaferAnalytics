@@ -6,6 +6,7 @@ import { RequestUsarioInterface } from '../../interfaces/usuario/requestUsuario.
 import { map } from 'rxjs';
 import { GlobalUtil } from '../../util/global-util';
 import { Router } from '@angular/router';
+import { CookieEnum } from '../../enum/cookie.enum';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit{
     if(this.loginForm && this.loginForm.valid) {
 
       //SIMULAÇÃO DO QUE VAI ACONTECER NO BACK
-      //EM UM CENARIO REAL, SOMENTE FARIAMOS UM POST E RETORNARIA OS DADOS DO USUARIO
+      //EM UM CENARIO REAL, SOMENTE FARIAMOS UM POST E RETORNARIA OS DADOS DO USUARIO OU NAO!
       this.loginService.getListaUsuarios()
       .pipe(map(el => el.find(el =>
         (el.usuario === dataLogin.usuario) && (el.senha === dataLogin.senha)
@@ -51,6 +52,8 @@ export class LoginComponent implements OnInit{
         next: resp => {
           if (resp) {
             this.sweetAlert.sucess(`Bem vindo ${resp.nome}`);
+            console.log(resp)
+            this.util.setCookie(CookieEnum.LOGIN, resp)
             this.router.navigate(['/dashboard'])
           } else {
             this.sweetAlert.error('Usuário/Senha invalidos!');

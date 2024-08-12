@@ -12,14 +12,18 @@ import { PasswordModule } from 'primeng/password';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
+import { ChartModule } from 'primeng/chart';
 import Swal from 'sweetalert2';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
+import { CookieService } from 'ngx-cookie-service';
+import { MenuComponent } from './shared/components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { DashboardComponent } from './view/dashboard/dashboard/dashboard.compone
     ReactiveFormsModule,
     HttpClientModule,
     MessagesModule,
+    ChartModule
   ],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,47 @@
+
+@import '../../../../scss/variaveis.scss';
+
+:host {
+  * {
+    transition: 0.2s ease-out;
+  }
+}
+
+.menu-lateral {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 50px;
+
+  padding: 3% 2%;
+
+  position: absolute;
+  overflow: hidden;
+  z-index: 10;
+
+  background-color: white;
+  border-right: 2px solid $azul-1;
+
+  &:hover {
+    width: 250px;
+  }
+
+  .span-item-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 1%;
+    gap: 10;
+  }
+}
+
+.back-menu {
+  transition: 0.2s ease-in;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.300);
+}

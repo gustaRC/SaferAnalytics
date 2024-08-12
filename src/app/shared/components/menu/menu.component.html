@@ -1,0 +1,15 @@
+<div
+class="menu-lateral"
+(mouseenter)="mouseEventMenu()"
+(mouseleave)="mouseEventMenu()">
+  <span
+  class="span-item-menu ui-fluid"
+  href="">
+    <i class="pi pi-amazon"></i>
+    <p *ngIf="menuExpandido">TESTE</p>
+  </span>
+</div>
+
+<div
+*ngIf="menuExpandido"
+class="back-menu"></div>

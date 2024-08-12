@@ -1,2 +1,7 @@
-<router-outlet style="min-height: 100vh;"></router-outlet>
 
+<app-login *ngIf="permitirConteudo; else conteudo"></app-login>
+<ng-template #conteudo>
+  <router-outlet
+  style="min-height: 100vh;">
+  </router-outlet>
+</ng-template>

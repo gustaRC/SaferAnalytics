@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
+import { AutenticarGuardService } from './shared/guard/autenticar-guard.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AutenticarGuardService]},
 ];
 
 @NgModule({
