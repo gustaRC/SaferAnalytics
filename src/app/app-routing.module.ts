@@ -7,6 +7,7 @@ import { AutenticarGuardService } from './shared/guard/autenticar-guard.service'
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AutenticarGuardService]},
 ];
 
