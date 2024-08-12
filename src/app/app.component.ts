@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { GlobalUtil } from './shared/util/global-util';
 import { CookieEnum } from './shared/enum/cookie.enum';
@@ -8,7 +8,7 @@ import { CookieEnum } from './shared/enum/cookie.enum';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnChanges{
 
   permitirConteudo: boolean = false;
 
@@ -17,8 +17,12 @@ export class AppComponent implements OnInit{
     private util: GlobalUtil
   ) {}
 
-  ngOnInit() {
+
+  ngOnChanges(): void {
     this.permitirConteudo = this.util.getCookie(CookieEnum.LOGIN) ? true : false;
+  }
+
+  ngOnInit() {
     this.primengConfig.ripple = true;
   }
 }
