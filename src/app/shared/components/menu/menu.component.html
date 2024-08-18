@@ -2,12 +2,32 @@
 class="menu-lateral"
 (mouseenter)="mouseEventMenu()"
 (mouseleave)="mouseEventMenu()">
-  <span
-  class="span-item-menu ui-fluid"
-  href="">
-    <i class="pi pi-amazon"></i>
-    <p *ngIf="menuExpandido">TESTE</p>
-  </span>
+  <div class="conteiner-logo-menu">
+    <img *ngIf="menuExpandido" src="" alt="logo-belt" draggable="false">
+    <img *ngIf="!menuExpandido"
+    src="assets/icons/belt-icon.png"
+    alt="icone-belt"
+    width="50px"
+    draggable="false">
+  </div>
+  <div class="conteiner-item-menu">
+    <span
+    class="span-item-menu ui-fluid"
+    [routerLink]="['/dashboard']">
+      <i class="pi pi-th-large"></i>
+      <p *ngIf="menuExpandido" style="margin: 0;">
+        Dashboard
+      </p>
+    </span>
+    <span
+    class="span-item-menu ui-fluid"
+    [routerLink]="['/']">
+      <i class="pi pi-users"></i>
+      <p *ngIf="menuExpandido" style="margin: 0;">
+        Setores
+      </p>
+    </span>
+  </div>
 </div>
 
 <div

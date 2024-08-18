@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MenuComponent } from './shared/components/menu/menu.component';
     ReactiveFormsModule,
     HttpClientModule,
     MessagesModule,
-    ChartModule
+    ChartModule,
+    AccordionModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { CookieEnum } from './shared/enum/cookie.enum';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnChanges{
+export class AppComponent implements OnInit{
 
   permitirConteudo: boolean = false;
 
@@ -17,12 +17,13 @@ export class AppComponent implements OnInit, OnChanges{
     private util: GlobalUtil
   ) {}
 
-
-  ngOnChanges(): void {
-    this.permitirConteudo = this.util.getCookie(CookieEnum.LOGIN) ? true : false;
-  }
-
   ngOnInit() {
     this.primengConfig.ripple = true;
   }
+
+  permitirConteudoFunc() {
+    this.permitirConteudo = this.util.getCookie(CookieEnum.LOGIN) ? true : false;
+    return this.permitirConteudo;
+  }
+
 }

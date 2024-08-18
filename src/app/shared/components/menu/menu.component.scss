@@ -4,6 +4,7 @@
 :host {
   * {
     transition: 0.2s ease-out;
+    text-decoration: none;
   }
 }
 
@@ -12,17 +13,20 @@
   align-items: center;
   flex-direction: column;
 
-  height: 100vh;
-  width: 50px;
+  transition: 0.1s ease-in-out;
 
-  padding: 3% 2%;
+  height: 100vh;
+  width: 60px;
+
+  padding: 2% 0;
+  padding-left: 0;
 
   position: absolute;
   overflow: hidden;
   z-index: 10;
 
   background-color: white;
-  border-right: 2px solid $azul-1;
+  border-right: 1px solid $azul-1;
 
   &:hover {
     width: 250px;
@@ -30,18 +34,40 @@
 
   .span-item-menu {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    padding: 2% 1%;
-    gap: 10;
+    width: 100%;
+    gap: 10px;
+    padding: 1em 0;
+    padding-left: 1.2em;
+    text-align: left;
+
+    &:hover {
+      cursor: pointer;
+      filter: opacity(0.8);
+      background-color: rgb(245, 245, 245);
+    }
   }
 }
 
 .back-menu {
-  transition: 0.2s ease-in;
   width: 100vw;
   height: 100vh;
   position: absolute;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.300);
+}
+
+.conteiner-item-menu {
+  margin: 5em 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.conteiner-logo-menu {
+  height: 5em;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }

@@ -22,6 +22,6 @@ export class MenuComponent {
   mouseEventMenu() {
     setTimeout(() => {
       this.menuExpandido = !this.menuExpandido
-    }, 200);
+    }, 50);
   }
 }
