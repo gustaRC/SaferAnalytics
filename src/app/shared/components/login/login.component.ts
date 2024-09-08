@@ -2,7 +2,7 @@ import { SweetAlert } from '../../util/sweet-alert';
 import { LoginService } from '../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { RequestUsarioInterface } from '../../interfaces/usuario/requestUsuario.interface';
+import { RequestUsarioDto } from '../../dto/usuario/requestUsuario.dto';
 import { map } from 'rxjs';
 import { GlobalUtil } from '../../util/global-util';
 import { Router } from '@angular/router';
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
   loginSubmit(): void {
     this.sweetAlert.loader()
 
-    const dataLogin: RequestUsarioInterface = {
+    const dataLogin: RequestUsarioDto = {
       usuario: this.loginForm.value.usuario as string,
       senha: this.loginForm.value.senha as string
     }

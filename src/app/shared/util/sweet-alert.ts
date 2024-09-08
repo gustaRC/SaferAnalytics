@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +88,29 @@ export class SweetAlert {
 
   close() {
     Swal.close();
+  }
+
+  confirmation(titulo: string, icone: SweetAlertIcon, desc?: string) {
+    return Swal.fire({
+      title: titulo,
+      icon: icone,
+      text: desc,
+      width: '30rem',
+      customClass: {
+        confirmButton: "btn-confirm-sweetAlert"
+      },
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInDown
+          animate__faster
+        `
+      },
+    });
   }
 
 }

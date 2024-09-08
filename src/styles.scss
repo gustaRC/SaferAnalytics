@@ -63,8 +63,22 @@ h3, h4 {
   min-height: 10rem !important;
 }
 
+.button-exit-menu {
+  width: 100% !important;
+  padding: 0.4em;
+}
 
+div:where(.swal2-container).swal2-center>.swal2-popup {
+  border: 2px solid $azul-1;
+}
 
+div:where(.swal2-container) h2:where(.swal2-title) {
+  font-size: 1.5em !important;
+}
+
+.btn-confirm-sweetAlert {
+  background-color: $azul-1 !important;
+}
 
 @media (max-width: 600px) {
   .card-login {

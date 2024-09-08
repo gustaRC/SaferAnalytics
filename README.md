@@ -29,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Iniciador do back simulado
 
 Run `npx json-server db.json` || "npm run back"
+
+## Site de animação utilizado:
+"https://animate.style/"

@@ -1,15 +1,24 @@
 <div
 class="menu-lateral"
 (mouseenter)="mouseEventMenu()"
-(mouseleave)="mouseEventMenu()">
-  <div class="conteiner-logo-menu">
-    <img *ngIf="menuExpandido" src="" alt="logo-belt" draggable="false">
+(mouseleave)="mouseEventMenu()"
+draggable="false">
+  <a class="conteiner-logo-menu"
+  href="https://beltsistemas.com.br/"
+  target="_blank">
+    <img *ngIf="menuExpandido"
+    src="assets/icons/LOGO-PADRAO.png"
+    alt="logo-belt"
+    width="180px"
+    draggable="false"
+    style="margin: 0;">
     <img *ngIf="!menuExpandido"
     src="assets/icons/belt-icon.png"
     alt="icone-belt"
     width="50px"
-    draggable="false">
-  </div>
+    draggable="false"
+    style="margin: 0;">
+  </a>
   <div class="conteiner-item-menu">
     <span
     class="span-item-menu ui-fluid"
@@ -27,6 +36,22 @@ class="menu-lateral"
         Setores
       </p>
     </span>
+  </div>
+  <div class="conteiner-footer-menu">
+    <p-button
+    *ngIf="!menuExpandido"
+    icon="pi pi-sign-out"
+    severity="danger"
+    [disabled]="true"
+    styleClass="button-exit-menu ui-fluid">
+    </p-button>
+    <p-button
+    *ngIf="menuExpandido"
+    label="Sair"
+    severity="danger"
+    styleClass="button-exit-menu ui-fluid"
+    (onClick)="logoutApp()">
+    </p-button>
   </div>
 </div>
 
