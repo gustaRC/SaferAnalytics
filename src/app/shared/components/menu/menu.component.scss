@@ -18,7 +18,7 @@
   height: 100vh;
   width: 60px;
 
-  padding: 2% 0;
+  padding: 1.5% 0;
   padding-left: 0;
 
   position: absolute;
@@ -81,4 +81,37 @@
   width: 100%;
   padding: 0 0.5em;
 
+}
+
+.conteiner-perfil-menu > h3, h4, p {
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0;
+  padding-bottom: 3px;
+}
+
+.conteiner-perfil-menu {
+  bottom: 10%;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  // padding: 0 6%;
+  text-align: center;
+}
+
+.conteiner-perfil-menu > hr {
+  width: 90%;
+}
+
+.conteiner-perfil-menu > p {
+  // padding-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: grey;
+  text-align: center;
+}
+
+.conteiner-perfil-menu > h4 {
+  font-size: 15px;
+  font-weight: 400;
 }

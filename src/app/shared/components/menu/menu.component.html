@@ -37,6 +37,23 @@ draggable="false">
       </p>
     </span>
   </div>
+  <div class="conteiner-perfil-menu" *ngIf="menuExpandido">
+    <p>
+      Perfil
+    </p>
+    <hr>
+    <h3>{{perfilAtual.nome}}</h3>
+    <h4>{{perfilAtual.cargo}}</h4>
+  </div>
+  <div class="conteiner-perfil-menu" *ngIf="!menuExpandido">
+    <p style="font-size: 12px;">Perfil</p>
+    <p-avatar
+    [label]="perfilAtual.nome[0]"
+    icon="pi pi-user"
+    pBadge
+    size="normal"
+    badgeSize="large" />
+  </div>
   <div class="conteiner-footer-menu">
     <p-button
     *ngIf="!menuExpandido"
@@ -54,7 +71,6 @@ draggable="false">
     </p-button>
   </div>
 </div>
-
 <div
 *ngIf="menuExpandido"
 class="back-menu"></div>

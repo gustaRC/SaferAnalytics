@@ -18,7 +18,15 @@
   "setores": [
     {
       "setor": "Desenvolvimento Web",
-      "funcionarios": []
+      "funcionarios": [
+        {
+          "nome": "Carlos Ney",
+          "tarefasAbertas": 35,
+          "enviadasTeste": 5,
+          "erroTeste": 2,
+          "tarefasFechadas": 4
+        }
+      ]
     },
     {
       "setor": "Desenvolvimento Delphi",

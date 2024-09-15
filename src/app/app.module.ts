@@ -18,6 +18,8 @@ import { DashboardComponent } from './view/dashboard/dashboard/dashboard.compone
 import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { AccordionModule } from 'primeng/accordion';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AccordionModule } from 'primeng/accordion';
     HttpClientModule,
     MessagesModule,
     ChartModule,
-    AccordionModule
+    AccordionModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -29,18 +29,18 @@ export class MenuComponent {
     this.menuExpandido = false;
     this.isMobile = this.util.isMobile();
 
-    const cookiePerfil = this.cookieService.get(CookieEnum.LOGIN)
+    const cookiePerfil = this.cookieService.get(CookieEnum.LOGIN);
     if( cookiePerfil ) {
-      this.perfilAtual = JSON.parse(cookiePerfil)
+      this.perfilAtual = JSON.parse(cookiePerfil);
     } else {
-      this.perfilAtual = new UsuarioDto
+      this.perfilAtual = new UsuarioDto;
     }
 
   }
 
   mouseEventMenu() {
     setTimeout(() => {
-      this.menuExpandido = !this.menuExpandido
+      this.menuExpandido = !this.menuExpandido;
     }, 50);
   }
 
@@ -49,7 +49,6 @@ export class MenuComponent {
       if(res.isConfirmed) {
         this.loginService.logout();
       }
-
 
     })
   }
