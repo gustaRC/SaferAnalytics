@@ -3,5 +3,5 @@ export class UsuarioDto {
   nome!: string;
   usuario!: string;
   senha!: string;
-  cargo!: string
+  cargo!: string;
 }

@@ -18,23 +18,181 @@
   "setores": [
     {
       "setor": "Desenvolvimento Web",
-      "funcionarios": [
-        {
-          "nome": "Carlos Ney",
-          "tarefasAbertas": 35,
-          "enviadasTeste": 5,
-          "erroTeste": 2,
-          "tarefasFechadas": 4
+      "funcionarios": [ {
+          "nome": "Gustavo Rodrigues",
+          "tarefasPeriodo": [ {
+            "ano": 2024,
+            "meses": [
+              {
+                "mes": 1,
+                "tarefas": {
+                  "tarefasAbertas": 35,
+                  "novasTarefas": 2,
+                  "enviadasTeste": 5,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 4,
+                  "horasTarefasFechadas": "16:00"
+                }
+              },
+              {
+                "mes": 2,
+                "tarefas": {
+                  "tarefasAbertas": 25,
+                  "novasTarefas": 0,
+                  "enviadasTeste": 10,
+                  "erroTeste": 5,
+                  "tarefasFechadas": 6,
+                  "horasTarefasFechadas": "10:40"
+                }
+              },
+              {
+                "mes": 3,
+                "tarefas": {
+                  "tarefasAbertas": 20,
+                  "novasTarefas": 1,
+                  "enviadasTeste": 5,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 5,
+                  "horasTarefasFechadas": "12:20"
+                }
+              }
+            ]
+          } ]
         }
       ]
     },
     {
       "setor": "Desenvolvimento Delphi",
-      "funcionarios": []
+      "funcionarios": [
+        {
+          "nome": "Adionei Lima",
+          "tarefasPeriodo": [ {
+            "ano": 2024,
+            "meses": [
+              {
+                "mes": 1,
+                "tarefas": {
+                  "tarefasAbertas": 240,
+                  "novasTarefas": 2,
+                  "enviadasTeste": 4,
+                  "erroTeste": 1,
+                  "tarefasFechadas": 0,
+                  "horasTarefasFechadas": "00:00"
+                }
+              },
+              {
+                "mes": 2,
+                "tarefas": {
+                  "tarefasAbertas": 243,
+                  "novasTarefas": 1,
+                  "enviadasTeste": 5,
+                  "erroTeste": 0,
+                  "tarefasFechadas": 3,
+                  "horasTarefasFechadas": "02:30"
+                }
+              },
+              {
+                "mes": 3,
+                "tarefas": {
+                  "tarefasAbertas": 241,
+                  "novasTarefas": 0,
+                  "enviadasTeste": 7,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 5,
+                  "horasTarefasFechadas": "12:00"
+                }
+              }
+            ]
+          } ]
+        }
+      ]
     },
     {
       "setor": "Validação",
-      "funcionarios": []
+      "funcionarios": [
+        {
+          "nome": "Jonathan",
+          "tarefasPeriodo": [ {
+            "ano": 2024,
+            "meses": [
+              {
+                "mes": 1,
+                "tarefas": {
+                  "tarefasAbertas": 240,
+                  "novasTarefas": 2,
+                  "enviadasTeste": 4,
+                  "erroTeste": 1,
+                  "tarefasFechadas": 0,
+                  "horasTarefasFechadas": "00:00"
+                }
+              },
+              {
+                "mes": 2,
+                "tarefas": {
+                  "tarefasAbertas": 243,
+                  "novasTarefas": 1,
+                  "enviadasTeste": 5,
+                  "erroTeste": 0,
+                  "tarefasFechadas": 3,
+                  "horasTarefasFechadas": "02:30"
+                }
+              },
+              {
+                "mes": 3,
+                "tarefas": {
+                  "tarefasAbertas": 241,
+                  "novasTarefas": 0,
+                  "enviadasTeste": 7,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 5,
+                  "horasTarefasFechadas": "12:00"
+                }
+              }
+            ]
+          } ]
+        },
+        {
+          "nome": "Marcos Paulo",
+          "tarefasPeriodo": [ {
+            "ano": 2024,
+            "meses": [
+              {
+                "mes": 1,
+                "tarefas": {
+                  "tarefasAbertas": 120,
+                  "novasTarefas": 2,
+                  "enviadasTeste": 4,
+                  "erroTeste": 1,
+                  "tarefasFechadas": 0,
+                  "horasTarefasFechadas": "00:00"
+                }
+              },
+              {
+                "mes": 2,
+                "tarefas": {
+                  "tarefasAbertas": 123,
+                  "novasTarefas": 1,
+                  "enviadasTeste": 5,
+                  "erroTeste": 0,
+                  "tarefasFechadas": 3,
+                  "horasTarefasFechadas": "02:30"
+                }
+              },
+              {
+                "mes": 3,
+                "tarefas": {
+                  "tarefasAbertas": 121,
+                  "novasTarefas": 0,
+                  "enviadasTeste": 7,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 5,
+                  "horasTarefasFechadas": "12:00"
+                }
+              }
+            ]
+          } ]
+        }
+      ]
     },
     {
       "setor": "Analistas",
