@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit{
         next: resp => {
           if (resp) {
             this.sweetAlert.sucess(`Bem vindo ${resp.nome}`);
-            console.log(resp)
             this.util.setCookie(CookieEnum.LOGIN, resp)
             this.router.navigate(['/dashboard'])
           } else {
@@ -60,7 +59,7 @@ export class LoginComponent implements OnInit{
           }
         },
         error: err => {
-          console.log(err)
+          console.error(err)
           this.sweetAlert.error('Erro: ' + err.message);
         }
       })

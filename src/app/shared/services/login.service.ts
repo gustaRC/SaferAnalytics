@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService extends RequisicaoPadraoService{
 
-  private linkUsarios = this.getEndpoint('usuarios');
+  private usuariosEndpoint = this.getEndpoint('usuarios');
 
   constructor(
     private http: HttpClient,
@@ -22,7 +22,7 @@ export class LoginService extends RequisicaoPadraoService{
   }
 
   getListaUsuarios(): Observable<UsuarioDto[]> {
-    return this.http.get<UsuarioDto[]>(`${this.linkUsarios}`)
+    return this.http.get<UsuarioDto[]>(`${this.usuariosEndpoint}`)
   }
 
   logout() {

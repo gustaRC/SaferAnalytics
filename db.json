@@ -19,6 +19,7 @@
     {
       "setor": "Desenvolvimento Web",
       "funcionarios": [ {
+          "id": 10,
           "nome": "Gustavo Rodrigues",
           "tarefasPeriodo": [ {
             "ano": 2024,
@@ -65,6 +66,7 @@
       "setor": "Desenvolvimento Delphi",
       "funcionarios": [
         {
+          "id": 11,
           "nome": "Adionei Lima",
           "tarefasPeriodo": [ {
             "ano": 2024,
@@ -111,6 +113,7 @@
       "setor": "Validação",
       "funcionarios": [
         {
+          "id": 12,
           "nome": "Jonathan",
           "tarefasPeriodo": [ {
             "ano": 2024,
@@ -152,6 +155,7 @@
           } ]
         },
         {
+          "id": 13,
           "nome": "Marcos Paulo",
           "tarefasPeriodo": [ {
             "ano": 2024,
