@@ -1,6 +1,32 @@
-<app-topbar [headerPagina]="'Dashboard'"></app-topbar>
+<div class="conteudo-dashboard">
+  <h3>Ano</h3>
+  <div class="div-ano field-checkbox">
+    <button
+      pButton
+      label="Selecionar Todos"
+      style="font-size: 14px; padding: 5px 10px; font-weight: 400; margin-right: 10px;"
+      [disabled]="anosSelecionados.length == listaAnosDisponiveis.length"
+      (click)="selecionarTodosAnos()"
+    ></button>
+    <div *ngFor="let ano of listaAnosDisponiveis">
+      <p-checkbox
+        [inputId]="'{{ano}}'"
+        [value]="ano"
+        label="{{ano}}"
+        [(ngModel)]="anosSelecionados"
+        name="ano">
+      </p-checkbox>
+    </div>
+  </div>
+</div>
 
-<div>
-
-  <p style="padding-top: 0; margin-top: 0px; margin-left: 80px;">dashboard works!</p>
+<div class="conteudo-dashboard">
+  <h3>Setores</h3>
+  <p-multiSelect
+    [options]="listaSetores"
+    [(ngModel)]="setoresSelecionados"
+    optionLabel="setor"
+    [showHeader]="false"
+    scrollHeight="300">
+  </p-multiSelect>
 </div>

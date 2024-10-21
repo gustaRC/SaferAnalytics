@@ -24,6 +24,11 @@ h3, h4 {
   color: $azul-escuro;
 }
 
+main {
+  margin-left: 80px;
+  margin-right: 20px;
+}
+
 .p-inputtext:hover {
   border-color: $azul-2;
 }
@@ -78,6 +83,30 @@ div:where(.swal2-container) h2:where(.swal2-title) {
 
 .btn-confirm-sweetAlert {
   background-color: $azul-1 !important;
+}
+
+.button-primary {
+  color: white;
+  background: $azul-1;
+  border: 1px solid $azul-1;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover{
+    filter: brightness(0.95);
+  }
+}
+
+.button-secondary {
+  color: $azul-escuro;
+  background: #fafcfd;
+  border: 1px solid #f1f1f1;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover{
+    filter: brightness(0.96);
+  }
 }
 
 @media (max-width: 600px) {

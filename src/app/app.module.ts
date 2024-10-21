@@ -9,11 +9,10 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { ChartModule } from 'primeng/chart';
-import Swal from 'sweetalert2';
 import { DashboardComponent } from './view/dashboard/dashboard/dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MenuComponent } from './shared/components/menu/menu.component';
@@ -21,6 +20,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TopbarComponent } from './shared/components/topbar/topbar.component';
     TopbarComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -44,7 +46,9 @@ import { TopbarComponent } from './shared/components/topbar/topbar.component';
     ChartModule,
     AccordionModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    CheckboxModule,
+    MultiSelectModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 <app-menu style="position: absolute;" *ngIf="permitirConteudoFunc()"></app-menu>
+<app-topbar [headerPagina]="'Dashboard'" *ngIf="permitirConteudoFunc()"></app-topbar>
 
-<router-outlet
-style="min-height: 100vh;">
-</router-outlet>
+<main>
+  <router-outlet>
+  </router-outlet>
+</main>

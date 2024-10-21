@@ -21,7 +21,8 @@
       "funcionarios": [ {
           "id": 10,
           "nome": "Gustavo Rodrigues",
-          "tarefasPeriodo": [ {
+          "tarefasPeriodo": [
+            {
             "ano": 2024,
             "meses": [
               {
@@ -58,7 +59,46 @@
                 }
               }
             ]
-          } ]
+            },
+            {
+            "ano": 2023,
+            "meses": [
+              {
+                "mes": 10,
+                "tarefas": {
+                  "tarefasAbertas": 35,
+                  "novasTarefas": 2,
+                  "enviadasTeste": 5,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 4,
+                  "horasTarefasFechadas": "16:00"
+                }
+              },
+              {
+                "mes": 11,
+                "tarefas": {
+                  "tarefasAbertas": 25,
+                  "novasTarefas": 0,
+                  "enviadasTeste": 10,
+                  "erroTeste": 5,
+                  "tarefasFechadas": 6,
+                  "horasTarefasFechadas": "10:40"
+                }
+              },
+              {
+                "mes": 12,
+                "tarefas": {
+                  "tarefasAbertas": 10,
+                  "novasTarefas": 1,
+                  "enviadasTeste": 5,
+                  "erroTeste": 2,
+                  "tarefasFechadas": 5,
+                  "horasTarefasFechadas": "12:20"
+                }
+              }
+            ]
+            }
+          ]
         }
       ]
     },
