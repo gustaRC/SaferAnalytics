@@ -20,6 +20,7 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 import { AccordionModule } from 'primeng/accordion';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { TopbarComponent } from './shared/components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     LoginComponent,
     DashboardComponent,
     MenuComponent,
+    TopbarComponent,
   ],
   imports: [
     BrowserModule,

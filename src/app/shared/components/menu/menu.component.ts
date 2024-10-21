@@ -38,12 +38,6 @@ export class MenuComponent {
 
   }
 
-  mouseEventMenu() {
-    setTimeout(() => {
-      this.menuExpandido = !this.menuExpandido;
-    }, 50);
-  }
-
   logoutApp() {
     this.sweetAlert.confirmation('Deseja realmente sair?', 'warning').then(res => {
       if(res.isConfirmed) {

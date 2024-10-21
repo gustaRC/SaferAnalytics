@@ -1,7 +1,7 @@
 <div
 class="menu-lateral"
-(mouseenter)="mouseEventMenu()"
-(mouseleave)="mouseEventMenu()"
+(mouseenter)="menuExpandido = true"
+(mouseleave)="menuExpandido = false"
 draggable="false">
   <a class="conteiner-logo-menu"
   href="https://beltsistemas.com.br/"
@@ -71,6 +71,8 @@ draggable="false">
     </p-button>
   </div>
 </div>
+
 <div
 *ngIf="menuExpandido"
-class="back-menu"></div>
+class="back-menu">
+</div>

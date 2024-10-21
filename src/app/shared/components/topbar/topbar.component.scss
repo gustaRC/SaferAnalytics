@@ -1,0 +1,15 @@
+@import '../../../../scss/variaveis.scss';
+
+.menu-topbar {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  padding-left: 6%;
+  margin-bottom: 3%;
+
+  background-color: white;
+  border-bottom: 1px solid $azul-1;
+}
