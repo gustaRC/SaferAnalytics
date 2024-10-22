@@ -1,0 +1,62 @@
+<div class="grid ui-fluid mb-10">
+  <div class="col-4">
+    <h4>Ano</h4>
+    <div class="div-ano field-checkbox pl-10">
+      <button
+        pButton
+        label="Selecionar Todos"
+        style="font-size: 14px; padding: 5px 10px; font-weight: 400; margin-right: 10px;"
+        [disabled]="anosSelecionados.length == listaAnosDisponiveis.length"
+        (click)="selecionarTodosAnos()"
+      ></button>
+      <div *ngFor="let ano of listaAnosDisponiveis">
+        <p-checkbox
+          [inputId]="'{{ano}}'"
+          [value]="ano"
+          label="{{ano}}"
+          [(ngModel)]="anosSelecionados"
+          name="ano"
+          (onChange)="tratarDados()">
+        </p-checkbox>
+      </div>
+      <span style="font-size: 14px;" *ngIf="listaAnosDisponiveis.length == 0">
+        Nenhum ano dispónivel
+      </span>
+    </div>
+  </div>
+  <div class="col-4">
+    <h4>Funcionários</h4>
+    <div class="pl-10">
+      <p-multiSelect
+        [options]="listaFuncionarioInput"
+        [(ngModel)]="funcionariosSelecionados"
+        optionLabel="nome"
+        optionValue="id"
+        [showHeader]="false"
+        scrollHeight="300"
+        styleClass="input-multiselect-dashboard"
+        selectedItemsLabel="Todos os funcionários selecionados!"
+        [placeholder]="'Nenhum funcionário selecionado'"
+        (onChange)="tratarDados()">
+      </p-multiSelect>
+    </div>
+  </div>
+  <div class="col-4">
+    <h4>Setores</h4>
+    <div class="pl-10">
+      <p-multiSelect
+        [options]="listaSetoresInput"
+        [(ngModel)]="setoresSelecionados"
+        optionLabel="nome"
+        [showHeader]="false"
+        scrollHeight="300"
+        styleClass="input-multiselect-dashboard"
+        selectedItemsLabel="Todos os setores selecionados!"
+        [placeholder]="'Nenhum setor selecionado'"
+        (onChange)="tratarDadosSetores()">
+      </p-multiSelect>
+    </div>
+  </div>
+
+</div>
+<hr>

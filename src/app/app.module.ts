@@ -22,6 +22,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { TopbarComponent } from './shared/components/topbar/topbar.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { FilterComponent } from './shared/components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DashboardComponent,
     MenuComponent,
     TopbarComponent,
+    FilterComponent,
   ],
   imports: [
     FormsModule,

@@ -1,36 +1,13 @@
-<div class="conteudo-dashboard">
-  <h3>Ano</h3>
-  <div class="div-ano field-checkbox">
-    <button
-      pButton
-      label="Selecionar Todos"
-      style="font-size: 14px; padding: 5px 10px; font-weight: 400; margin-right: 10px;"
-      [disabled]="anosSelecionados.length == listaAnosDisponiveis.length"
-      (click)="selecionarTodosAnos()"
-    ></button>
-    <div *ngFor="let ano of listaAnosDisponiveis">
-      <p-checkbox
-        [inputId]="'{{ano}}'"
-        [value]="ano"
-        label="{{ano}}"
-        [(ngModel)]="anosSelecionados"
-        name="ano">
-      </p-checkbox>
-    </div>
-  </div>
-</div>
+<app-filter></app-filter>
 
-<div class="conteudo-dashboard">
-  <h3>Setores</h3>
-  <div>
-    <p-multiSelect
-      [options]="listaSetores"
-      [(ngModel)]="setoresSelecionados"
-      optionLabel="setor"
-      [showHeader]="false"
-      scrollHeight="300"
-      styleClass="input-multiselect-dashboard"
-      selectedItemsLabel="Todos os setores selecionados!">
-    </p-multiSelect>
+<h3>Gráficos</h3>
+<div class="grid ui-fluid">
+  <div class="col-6">
+    <h4>Horas Trabalhadas</h4>
   </div>
+  <div class="col-6">
+    <h4>Tarefas para Teste/Erro no teste</h4>
+  </div>
+
+
 </div>
