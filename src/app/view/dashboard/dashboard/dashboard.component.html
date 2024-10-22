@@ -22,11 +22,15 @@
 
 <div class="conteudo-dashboard">
   <h3>Setores</h3>
-  <p-multiSelect
-    [options]="listaSetores"
-    [(ngModel)]="setoresSelecionados"
-    optionLabel="setor"
-    [showHeader]="false"
-    scrollHeight="300">
-  </p-multiSelect>
+  <div>
+    <p-multiSelect
+      [options]="listaSetores"
+      [(ngModel)]="setoresSelecionados"
+      optionLabel="setor"
+      [showHeader]="false"
+      scrollHeight="300"
+      styleClass="input-multiselect-dashboard"
+      selectedItemsLabel="Todos os setores selecionados!">
+    </p-multiSelect>
+  </div>
 </div>
