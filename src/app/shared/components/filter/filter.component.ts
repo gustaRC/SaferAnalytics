@@ -5,6 +5,7 @@ import { SetoresService } from '../../services/setores.service';
 import { SweetAlert } from '../../util/sweet-alert';
 import { TipoGenericoDto } from '../../dto/usuario/setores/tipoGenerico.dto';
 import { TarefasPeriodoDto } from '../../dto/usuario/setores/tarefasPeriodo.dto';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-filter',
@@ -14,15 +15,15 @@ import { TarefasPeriodoDto } from '../../dto/usuario/setores/tarefasPeriodo.dto'
 export class FilterComponent implements OnInit{
 
   @Output() dataOutput = new EventEmitter<any>()
-  dataGeral: SetorDto[] = [];
+  private listaSetores$ = new BehaviorSubject<SetorDto[]>([]);
 
-  listaSetores: SetorDto[] = [];
-  listaSetoresInput: TipoGenericoDto[] = [];
+  dataSetores: SetorDto[] = [];
+  listaSetorInput: TipoGenericoDto[] = [];
   setoresSelecionados: TipoGenericoDto[] = [];
 
-  listaFuncionarios: FuncionarioDto[][] = [];
+  listaFuncionarios: FuncionarioDto[] = [];
   listaFuncionarioInput: TipoGenericoDto[] = []
-  funcionariosSelecionados: number[] = [];
+  funcionariosSelecionados: TipoGenericoDto[] = [];
 
   listaAnosDisponiveis: number[] = [];
   anosSelecionados: number[] = [];
@@ -41,70 +42,95 @@ export class FilterComponent implements OnInit{
     this.setoresService.getSetores()
     .subscribe({
       next: resp => {
-        this.listaSetores = resp; //VARIAVEL BACKUP
-        this.dataGeral = this.listaSetores; //VARIAVEL REFERENCIA
+        this.dataSetores = resp; //VARIAVEL BACKUP
+        this.listaSetores$.next(resp)
 
-        this.definirSetores();
-        this.definirFuncionariosDisponiveis();
-        this.definirAnosDisponiveis();
+        this.dataOutput.emit(this.dataSetores)
+
+        this.definirSetoresInput();
+        this.definirFuncionariosInput();
       },
       error: err => this.sweetAlert.error(err),
       complete: () => this.sweetAlert.close()
     })
   }
 
-  definirSetores() {
-    this.dataGeral.forEach(el => {
-      this.listaSetoresInput.push({nome: el.setor, id: el.id})
+  definirSetoresInput() {
+    this.listaSetorInput = [];
+    this.setoresSelecionados = [];
+
+    this.dataSetores.forEach(set => {
+      this.listaSetorInput.push({nome: set.setor, id: set.id})
     })
-    this.setoresSelecionados = this.listaSetoresInput;
+    this.setoresSelecionados = this.listaSetorInput;
   }
 
-  tratarDadosSetores() {
-    this.dataGeral = []
+  tratarSetoresSelecionados() {
+    this.listaSetores$.subscribe(
+      resp => {
+        const arrSet: SetorDto[] = [];
 
-    this.setoresSelecionados.forEach(set => {
-      this.listaSetores.forEach(setor => {
-        set.id == setor.id && this.dataGeral.push(setor)
+        resp.forEach(set => {
+          this.setoresSelecionados.forEach(setS => {
+            setS.id == set.id && arrSet.push(set);
+          })
+        })
+
+        this.dataSetores = arrSet;
+      }
+    )
+
+    this.definirFuncionariosInput();
+  }
+
+  definirFuncionariosInput() {
+    this.listaFuncionarioInput = [];
+    this.funcionariosSelecionados = [];
+
+    this.dataSetores.forEach(set => {
+      set.funcionarios.map(func => {
+        this.listaFuncionarioInput.push({nome: func.nome, id: func.id});
       })
-    });
-
-    this.definirFuncionariosDisponiveis();
-    this.definirAnosDisponiveis();
+    })
+    this.funcionariosSelecionados = this.listaFuncionarioInput;
   }
 
-  tratarDados() {
+  tratarFuncionariosSelecionados() {
+    this.listaSetores$.subscribe(
+      resp => {
+        console.log('funcionario selecionados', this.funcionariosSelecionados);
+        this.funcionariosSelecionados.forEach(funcS => {
 
-    console.log('datageral APOS manipulacao', this.dataGeral)
+        resp.forEach(set => {
+          const arrFunc: FuncionarioDto[] = [];
+
+          set.funcionarios.map(func => {
+
+              funcS.id == func.id && arrFunc.push(func);
+              console.log('aoo', arrFunc)
+            })
+            console.log('funcionario', arrFunc)
+            this.dataSetores.forEach(dataSet => {
+              dataSet.funcionarios = arrFunc
+            })
+          })
+
+        })
+        console.log('datasetores', this.dataSetores)
+
+      }
+    )
   }
 
-  definirAnosDisponiveis() {
-    this.listaAnosDisponiveis = []
-
-    this.dataGeral.forEach(el => {
-      el.funcionarios.map(ele => {
-        ele.tarefasPeriodo.map(elem => !this.listaAnosDisponiveis.includes(elem.ano) && this.listaAnosDisponiveis.push(elem.ano))
-      })
+  consoleListaSetor() {
+    this.listaSetores$.subscribe({
+      next: resp => console.log('listaSetores$ value',resp)
     })
-    this.selecionarTodosAnos();
-  }
-
-  definirFuncionariosDisponiveis() {
-    this.listaFuncionarioInput = []
-    this.listaFuncionarios = []
-
-    this.dataGeral.forEach(setor => {
-      this.listaFuncionarios.push(setor.funcionarios)
-    })
-
-    this.listaFuncionarios.forEach(el => {
-      el.forEach(ele => this.listaFuncionarioInput.push({nome: ele.nome, id: ele.id}))
-    })
-    this.funcionariosSelecionados = [...this.listaFuncionarioInput.map(el => el.id)]
   }
 
   selecionarTodosAnos() {
-    this.anosSelecionados = this.listaAnosDisponiveis
+    this.anosSelecionados = [...this.listaAnosDisponiveis];
   }
+
 
 }

@@ -16,7 +16,7 @@
           label="{{ano}}"
           [(ngModel)]="anosSelecionados"
           name="ano"
-          (onChange)="tratarDados()">
+          >
         </p-checkbox>
       </div>
       <span style="font-size: 14px;" *ngIf="listaAnosDisponiveis.length == 0">
@@ -31,13 +31,12 @@
         [options]="listaFuncionarioInput"
         [(ngModel)]="funcionariosSelecionados"
         optionLabel="nome"
-        optionValue="id"
         [showHeader]="false"
         scrollHeight="300"
         styleClass="input-multiselect-dashboard"
         selectedItemsLabel="Todos os funcionários selecionados!"
         [placeholder]="'Nenhum funcionário selecionado'"
-        (onChange)="tratarDados()">
+        (onChange)="tratarFuncionariosSelecionados()">
       </p-multiSelect>
     </div>
   </div>
@@ -45,7 +44,7 @@
     <h4>Setores</h4>
     <div class="pl-10">
       <p-multiSelect
-        [options]="listaSetoresInput"
+        [options]="listaSetorInput"
         [(ngModel)]="setoresSelecionados"
         optionLabel="nome"
         [showHeader]="false"
@@ -53,7 +52,7 @@
         styleClass="input-multiselect-dashboard"
         selectedItemsLabel="Todos os setores selecionados!"
         [placeholder]="'Nenhum setor selecionado'"
-        (onChange)="tratarDadosSetores()">
+        (onChange)="tratarSetoresSelecionados()">
       </p-multiSelect>
     </div>
   </div>

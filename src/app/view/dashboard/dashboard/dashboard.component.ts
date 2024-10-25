@@ -11,12 +11,18 @@ import { FuncionarioDto } from 'src/app/shared/dto/usuario/setores/funcionario.d
 })
 export class DashboardComponent implements OnInit{
 
+  listaDados: SetorDto[] = [];
+
   constructor(
     private setoresService: SetoresService,
     private sweetAlert: SweetAlert
   ) { }
 
   ngOnInit(): void {
+  }
+
+  tratamentoDados(event: SetorDto[]) {
+    this.listaDados = event
   }
 
 }
