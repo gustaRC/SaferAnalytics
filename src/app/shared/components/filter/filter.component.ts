@@ -42,10 +42,10 @@ export class FilterComponent implements OnInit{
     this.setoresService.getSetores()
     .subscribe({
       next: resp => {
-        this.dataSetores = resp; //VARIAVEL BACKUP
-        this.listaSetores$.next(resp)
+        this.dataSetores = resp;//MANIPULAR
+        this.listaSetores$.next([...resp])//BACKUP
 
-        this.dataOutput.emit(this.dataSetores)
+        this.emitirDados();
 
         this.definirSetoresInput();
         this.definirFuncionariosInput();
@@ -79,8 +79,11 @@ export class FilterComponent implements OnInit{
         this.dataSetores = arrSet;
       }
     )
+    // console.log('datasetores', this.dataSetores)
+    // this.consoleListaSetor()
 
     this.definirFuncionariosInput();
+    this.emitirDados();
   }
 
   definirFuncionariosInput() {
@@ -93,31 +96,37 @@ export class FilterComponent implements OnInit{
       })
     })
     this.funcionariosSelecionados = this.listaFuncionarioInput;
+
+    // console.log('datasetores', this.dataSetores)
+    // this.consoleListaSetor()
   }
 
   tratarFuncionariosSelecionados() {
+    // console.log('ANTES', this.dataSetores);
+    // this.consoleListaSetor();
+
     this.listaSetores$.subscribe(
       resp => {
-        console.log('funcionario selecionados', this.funcionariosSelecionados);
-        this.funcionariosSelecionados.forEach(funcS => {
+        // console.log('funcionario selecionados', this.funcionariosSelecionados);
+        const dataSetoresCopia = [...resp];
 
-        resp.forEach(set => {
-          const arrFunc: FuncionarioDto[] = [];
+        this.funcionariosSelecionados.forEach(funcSelec => {
+          dataSetoresCopia.forEach(set => {
+            const arrFunc: FuncionarioDto[] = [];
 
-          set.funcionarios.map(func => {
-
-              funcS.id == func.id && arrFunc.push(func);
-              console.log('aoo', arrFunc)
+            set.funcionarios.map(func => {
+              if (funcSelec.id == func.id) {
+                arrFunc.push(func);
+              }
+              // console.log('aoo', arrFunc)
             })
-            console.log('funcionario', arrFunc)
-            this.dataSetores.forEach(dataSet => {
-              dataSet.funcionarios = arrFunc
-            })
+
+            set.funcionarios = arrFunc; // Altera a cópia
           })
-
         })
-        console.log('datasetores', this.dataSetores)
 
+        // console.log('datasetores', this.dataSetores)
+        // this.consoleListaSetor()
       }
     )
   }
@@ -132,5 +141,8 @@ export class FilterComponent implements OnInit{
     this.anosSelecionados = [...this.listaAnosDisponiveis];
   }
 
+  emitirDados() {
+    this.dataOutput.emit(this.dataSetores);
+  }
 
 }

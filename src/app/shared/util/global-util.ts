@@ -26,4 +26,12 @@ export class GlobalUtil {
     return this.cookieService.get(nomeCookie)
   }
 
+  getNomeMes(mes: number) {
+    return new Date(2024, mes - 1).toLocaleString('pt-BR', {month: 'long'});
+  }
+
+  getAnoCurto(ano: number) {
+    return ano.toString().slice(-2);
+  }
+
 }

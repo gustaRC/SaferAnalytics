@@ -1,13 +1,78 @@
 <app-filter (dataOutput)="tratamentoDados($event)"></app-filter>
 
-<h3>Gráficos</h3>
+<h3>Informações Gerais</h3>
 <div class="grid ui-fluid">
-  <div class="col-6">
-    <h4>Horas Trabalhadas</h4>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">Tarefas Abertas:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-padrao col-7"
+      [(ngModel)]="infoGeral.tarefasAbertas"
+      disabled>
+    </span>
   </div>
-  <div class="col-6">
-    <h4>Tarefas para Teste/Erro no teste</h4>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">Enviadas para Teste:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-padrao col-7 "
+      [(ngModel)]="infoGeral.enviadasTeste"
+      disabled>
+    </span>
   </div>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">Erros no Teste:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-negativa col-7"
+      [(ngModel)]="infoGeral.erroTeste"
+      disabled>
+    </span>
+  </div>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">Tarefas Fechadas:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-padrao col-7"
+      [(ngModel)]="infoGeral.tarefasFechadas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">Horas Totais:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-padrao col-7"
+      [(ngModel)]="infoGeral.horasTarefasFechadas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-5">% Erros:</label>
+      <input pInputText
+      type="text"
+      class="p-inputtext-sm color-negativa col-7"
+      [(ngModel)]="infoGeral.porcentagemErroTeste"
+      disabled>
+    </span>
+  </div>
+
+</div>
+
+
+<h3>Gráficos</h3>
+<div class="grid ui-fluid pl-10">
+  <div class="col-6">
+    <h4>Por mês: Tarefas para Teste | Erro no teste | Fechadas</h4>
+    <p-chart type="bar" [data]="dataGraficoTarefasTesteErroFechada" [options]="optionsGraficoTarefasTesteErroFechada"></p-chart>
+  </div>
+  <!-- <div class="col-1"></div> -->
 
 
 </div>

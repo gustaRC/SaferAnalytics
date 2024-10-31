@@ -7,6 +7,10 @@
 @import './scss/variaveis.scss';
 @import './scss/loader.scss';
 
+*::selection {
+  background-color: #69696948;
+}
+
 html, body {
   min-height: 100vh;
   margin: 0;
@@ -26,6 +30,7 @@ h3, h4 {
 
 h4 {
   margin-bottom: 12px;
+  margin-top: 12px;
 }
 
 hr {

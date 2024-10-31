@@ -1,0 +1,36 @@
+@import '../../../../scss/variaveis.scss';
+
+.span-info-gerais {
+  // display: flex;
+  // align-items:center;
+  // gap: 10px;
+}
+
+.color-padrao {
+  color: $azul-escuro;
+}
+
+.color-negativa {
+  color: $verm-erro-2;
+}
+
+.span-info-gerais > input {
+  background-color: rgba(255, 255, 255, 0.40);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-width: 2px;
+  border-radius: 2px;
+  height: 30px;
+  padding: 2px 10px;
+  font-size: 20px;
+  text-align: end;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.span-info-gerais > label {
+  padding-left: 20px;
+  color: $cinza-3;
+  font-size: 14px;
+}
