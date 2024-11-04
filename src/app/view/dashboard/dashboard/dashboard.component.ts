@@ -28,6 +28,9 @@ export class DashboardComponent implements OnInit{
   dataGraficoTarefasTesteErroFechada: any;
   optionsGraficoTarefasTesteErroFechada: any;
 
+  dataGraficoTarefasAbertasFechadas: any;
+  optionsGraficoTarefasAbertasFechadas: any;
+
   constructor(
     private util: GlobalUtil
   ) { }
@@ -54,10 +57,10 @@ export class DashboardComponent implements OnInit{
     this.atribuirVariaveisData();
 
     this.definirGraficoTarefasTesteErrosFechada();
+    this.definirGraficoTarefasAbertasFechadas();
   }
 
   atribuirVariaveisData() {
-
     this.redefinirVariaveis();
 
     this.listaDados.forEach(set => {
@@ -137,8 +140,6 @@ export class DashboardComponent implements OnInit{
     const minutos = Math.round((totalHoras - horasInt) * 60);
     this.infoGeral.horasTarefasFechadas = `${String(horasInt).padStart(2, '0')}:${String(minutos).padStart(2, '0')}`;
 
-    // this.infoGeral.horasTarefasFechadas =
-
     console.log('infogeral', this.infoGeral)
   }
 
@@ -200,6 +201,23 @@ export class DashboardComponent implements OnInit{
 
   }
 
+  definirGraficoTarefasAbertasFechadas() {
+    this.dataGraficoTarefasAbertasFechadas = {
+      labels: ['Abertas', 'Fechadas'],
+      datasets: [
+        {
+          data: [this.infoGeral.tarefasAbertas, this.infoGeral.tarefasFechadas],
+          backgroundColor: [CoresEnum.LARANJA1, CoresEnum.VERDE1]
+        }
+      ]
+    }
+
+    this.optionsGraficoTarefasAbertasFechadas = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+    }
+
+  }
 
 
 

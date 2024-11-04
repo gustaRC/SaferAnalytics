@@ -8,4 +8,6 @@ export enum CoresEnum {
   CINZA1 = '#D8D8D8',
   CINZA2 = '#999999',
   CINZA3 = '#616161',
+  LARANJA1 = '#f8c13fc6',
+  LARANJA2 = '#f8a53f',
 }

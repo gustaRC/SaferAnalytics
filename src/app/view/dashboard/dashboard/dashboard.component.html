@@ -69,10 +69,15 @@
 <h3>Gráficos</h3>
 <div class="grid ui-fluid pl-10">
   <div class="col-6">
-    <h4>Por mês: Tarefas para Teste | Erro no teste | Fechadas</h4>
-    <p-chart type="bar" [data]="dataGraficoTarefasTesteErroFechada" [options]="optionsGraficoTarefasTesteErroFechada"></p-chart>
+    <h4>Tarefas para Teste | Erro no teste | Fechadas</h4>
+    <p-chart type="bar" [data]="dataGraficoTarefasTesteErroFechada" [options]="optionsGraficoTarefasTesteErroFechada" [height]="'400'"></p-chart>
   </div>
-  <!-- <div class="col-1"></div> -->
+  <div class="col-1"></div>
+  <div class="col-5">
+    <h4>Tarefas Abertas | Fechadas</h4>
+    <p-chart type="doughnut" [data]="dataGraficoTarefasAbertasFechadas" [options]="optionsGraficoTarefasAbertasFechadas" [height]="'400'"></p-chart>
+
+  </div>
 
 
 </div>
