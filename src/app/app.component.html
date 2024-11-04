@@ -1,4 +1,4 @@
-<app-menu style="position: absolute;" *ngIf="permitirConteudoFunc()"></app-menu>
+<app-menu style="position: fixed; z-index: 10;" *ngIf="permitirConteudoFunc()"></app-menu>
 <app-topbar [headerPagina]="'Dashboard'" *ngIf="permitirConteudoFunc()"></app-topbar>
 
 <main>

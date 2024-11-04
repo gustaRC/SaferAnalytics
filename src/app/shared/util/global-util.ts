@@ -34,4 +34,9 @@ export class GlobalUtil {
     return ano.toString().slice(-2);
   }
 
+  converterHoraDecimal(hora: string): number {
+    const [h, m] = hora.split(':').map(Number);
+    return Number(((h * 60 + m) / 60).toFixed(2));
+  }
+
 }

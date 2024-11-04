@@ -1,5 +1,6 @@
 import { SweetAlert } from './../../../shared/util/sweet-alert';
 import { Component, OnInit } from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 import { FuncionarioDto } from 'src/app/shared/dto/usuario/setores/funcionario.dto';
 import { SetorDto } from 'src/app/shared/dto/usuario/setores/setor.dto';
 import { TarefasDto } from 'src/app/shared/dto/usuario/setores/tarefas.dto';
@@ -25,11 +26,14 @@ export class DashboardComponent implements OnInit{
   datasetTarefasAbertas!: number[];
   datasetHorasFechadas!: string[];
 
-  dataGraficoTarefasTesteErroFechada: any;
-  optionsGraficoTarefasTesteErroFechada: any;
+  dataGraficoTarefasTesteErroFechada!: ChartData;
+  optionsGraficoTarefasTesteErroFechada!: ChartOptions;
 
-  dataGraficoTarefasAbertasFechadas: any;
-  optionsGraficoTarefasAbertasFechadas: any;
+  dataGraficoTarefasAbertasFechadas!: ChartData;
+  optionsGraficoTarefasAbertasFechadas!: ChartOptions;
+
+  dataGraficoHorasTrabalhadas!: ChartData;
+  optionsGraficoHorasTrabalhadas!: ChartOptions;
 
   constructor(
     private util: GlobalUtil
@@ -58,6 +62,7 @@ export class DashboardComponent implements OnInit{
 
     this.definirGraficoTarefasTesteErrosFechada();
     this.definirGraficoTarefasAbertasFechadas();
+    this.definirGraficoHorasTrabalhadas();
   }
 
   atribuirVariaveisData() {
@@ -187,13 +192,11 @@ export class DashboardComponent implements OnInit{
             },
             grid: {
               color: CoresEnum.CINZA1,
-              drawBorder: false
             }
           },
           y: {
             grid: {
               color: CoresEnum.CINZA1,
-              drawBorder: false
             }
           }
       }
@@ -216,9 +219,39 @@ export class DashboardComponent implements OnInit{
       maintainAspectRatio: false,
       aspectRatio: 0.8,
     }
-
   }
 
+  definirGraficoHorasTrabalhadas() {
+    console.log(this.datasetHorasFechadas)
+    const datasetHorasDecimais = this.datasetHorasFechadas.map(el => this.util.converterHoraDecimal(el))
+    console.log(datasetHorasDecimais)
+    this.dataGraficoHorasTrabalhadas = {
+      labels: [...this.mesesDisponiveis],
+      datasets: [
+        {
+          type: 'line',
+          label: 'Horas',
+          data: [...datasetHorasDecimais],
+          borderColor: CoresEnum.AZUL2,
+          borderWidth: 2,
+          fill: false,
+        },
+        {
+          type: 'bar',
+          label: 'Tarefas Fechadas',
+          data: this.datasetTarefasFechadas,
+          backgroundColor: CoresEnum.VERDE1,
+          borderColor: CoresEnum.VERDE2,
+        }
+      ]
+    }
+
+    this.optionsGraficoHorasTrabalhadas = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.6,
+    }
+
+  }
 
 
 }
