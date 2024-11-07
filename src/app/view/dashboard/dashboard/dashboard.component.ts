@@ -222,9 +222,7 @@ export class DashboardComponent implements OnInit{
   }
 
   definirGraficoHorasTrabalhadas() {
-    console.log(this.datasetHorasFechadas)
     const datasetHorasDecimais = this.datasetHorasFechadas.map(el => this.util.converterHoraDecimal(el))
-    console.log(datasetHorasDecimais)
     this.dataGraficoHorasTrabalhadas = {
       labels: [...this.mesesDisponiveis],
       datasets: [
@@ -233,7 +231,7 @@ export class DashboardComponent implements OnInit{
           label: 'Horas',
           data: [...datasetHorasDecimais],
           borderColor: CoresEnum.AZUL2,
-          borderWidth: 2,
+          borderWidth: 3,
           fill: false,
         },
         {
@@ -246,9 +244,27 @@ export class DashboardComponent implements OnInit{
       ]
     }
 
+    const arrHorasFechadas = [...this.datasetHorasFechadas];
     this.optionsGraficoHorasTrabalhadas = {
       maintainAspectRatio: false,
       aspectRatio: 0.6,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label(tooltipItem) {
+              const value = tooltipItem.parsed.y;
+              if (tooltipItem.dataset.label == "Horas") {
+                const data = tooltipItem.dataset.data;
+                const index = data.indexOf(value);
+                const dataHora = arrHorasFechadas[index];
+                return ` Horas: ${dataHora}`
+              } else {
+                return `${tooltipItem.dataset.label}: ${value}`
+              }
+            },
+          }
+        }
+      }
     }
 
   }
