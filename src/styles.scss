@@ -77,6 +77,12 @@ main {
   justify-content: center !important;
 }
 
+.content-beetwen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .p-inputtext {
   width: 100% ;
 }
@@ -140,6 +146,20 @@ div:where(.swal2-container) h2:where(.swal2-title) {
   &:hover{
     filter: brightness(0.96);
   }
+}
+
+.btn-info {
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background-color: $azul-1;
+  border-color: whitesmoke;
+  cursor: auto;
+}
+
+.tooltip-info {
+  width: 30rem;
 }
 
 @media (max-width: 600px) {

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SetorDto } from '../../dto/usuario/setores/setor.dto';
-import { FuncionarioDto } from '../../dto/usuario/setores/funcionario.dto';
+import { SetorDto } from '../../dto/setores/setor.dto';
+import { FuncionarioDto } from '../../dto/setores/funcionario.dto';
 import { SetoresService } from '../../services/setores.service';
 import { SweetAlert } from '../../util/sweet-alert';
-import { TipoGenericoDto } from '../../dto/usuario/setores/tipoGenerico.dto';
-import { TarefasPeriodoDto } from '../../dto/usuario/setores/tarefasPeriodo.dto';
+import { TipoGenericoDto } from '../../dto/setores/tipoGenerico.dto';
+import { TarefasPeriodoDto } from '../../dto/setores/tarefasPeriodo.dto';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({

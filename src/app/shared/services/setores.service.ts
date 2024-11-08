@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RequisicaoPadraoService } from './requisicao-padrao.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SetorDto } from '../dto/usuario/setores/setor.dto';
+import { SetorDto } from '../dto/setores/setor.dto';
 
 @Injectable({
   providedIn: 'root'

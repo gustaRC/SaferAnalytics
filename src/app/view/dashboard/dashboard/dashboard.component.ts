@@ -1,9 +1,10 @@
 import { SweetAlert } from './../../../shared/util/sweet-alert';
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
-import { FuncionarioDto } from 'src/app/shared/dto/usuario/setores/funcionario.dto';
-import { SetorDto } from 'src/app/shared/dto/usuario/setores/setor.dto';
-import { TarefasDto } from 'src/app/shared/dto/usuario/setores/tarefas.dto';
+import { DatasetSetores } from 'src/app/shared/dto/graficos/datasetSetores.dto';
+import { FuncionarioDto } from 'src/app/shared/dto/setores/funcionario.dto';
+import { SetorDto } from 'src/app/shared/dto/setores/setor.dto';
+import { TarefasDto } from 'src/app/shared/dto/setores/tarefas.dto';
 import { CoresEnum } from 'src/app/shared/enum/coresGraficos.enum';
 import { GlobalUtil } from 'src/app/shared/util/global-util';
 
@@ -20,11 +21,15 @@ export class DashboardComponent implements OnInit{
   infoGeral!: TarefasDto;
 
   mesesDisponiveis!: any[];
+  setoresDisponiveis!: string[];
+
   datasetEnviadoTeste!: number[];
   datasetErroTeste!: number[];
   datasetTarefasFechadas!: number[];
   datasetTarefasAbertas!: number[];
+  datasetNovasTarefas!: number[];
   datasetHorasFechadas!: string[];
+  datasetSetores!: DatasetSetores[];
 
   dataGraficoTarefasTesteErroFechada!: ChartData;
   optionsGraficoTarefasTesteErroFechada!: ChartOptions;
@@ -34,6 +39,9 @@ export class DashboardComponent implements OnInit{
 
   dataGraficoHorasTrabalhadas!: ChartData;
   optionsGraficoHorasTrabalhadas!: ChartOptions;
+
+  dataGraficoSetoresRadar!: ChartData;
+  optionsGraficoSetoresRadar!: ChartOptions;
 
   constructor(
     private util: GlobalUtil
@@ -45,13 +53,16 @@ export class DashboardComponent implements OnInit{
 
   redefinirVariaveis() {
     this.infoGeral = new TarefasDto;
+    this.datasetSetores = [];
     this.listaFuncionarios = [];
     this.mesesDisponiveis = [];
+    this.setoresDisponiveis = [];
     this.datasetEnviadoTeste = [];
     this.datasetErroTeste = [];
     this.datasetTarefasFechadas = [];
     this.datasetTarefasAbertas = [];
     this.datasetHorasFechadas = [];
+    this.datasetNovasTarefas = [];
   }
 
   tratamentoDados(event: SetorDto[]) {
@@ -63,6 +74,7 @@ export class DashboardComponent implements OnInit{
     this.definirGraficoTarefasTesteErrosFechada();
     this.definirGraficoTarefasAbertasFechadas();
     this.definirGraficoHorasTrabalhadas();
+    this.definirGraficoSetoresRadar();
   }
 
   atribuirVariaveisData() {
@@ -70,12 +82,14 @@ export class DashboardComponent implements OnInit{
 
     this.listaDados.forEach(set => {
       this.listaFuncionarios.push(...set.funcionarios);
+      !this.setoresDisponiveis.find(el => el === set.setor) && this.setoresDisponiveis.push(set.setor);
     })
 
     const arrTeste: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrErro: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrFechada: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrAbertas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
+    const arrNovas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrHoras: string[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
 
     this.listaFuncionarios.forEach(func => {
@@ -91,6 +105,7 @@ export class DashboardComponent implements OnInit{
               arrErro[index].push(mes.tarefas.erroTeste);
               arrFechada[index].push(mes.tarefas.tarefasFechadas);
               arrAbertas[index].push(mes.tarefas.tarefasAbertas);
+              arrNovas[index].push(mes.tarefas.novasTarefas);
               arrHoras[index].push(mes.tarefas.horasTarefasFechadas);
             }
           }
@@ -115,6 +130,10 @@ export class DashboardComponent implements OnInit{
       const valorTotal = qtdeAbertas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
       qtdeAbertas.length > 0 && this.datasetTarefasAbertas.push(valorTotal);
     });
+    arrNovas.map(qtdeNovas => {
+      const valorTotal = qtdeNovas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      qtdeNovas.length > 0 && this.datasetNovasTarefas.push(valorTotal);
+    });
     arrHoras.map(qtdeHoras => {
       const valorTotal = qtdeHoras.reduce((acumulador, hora) => {
         const [h, m] = hora.split(":").map(Number);
@@ -136,6 +155,7 @@ export class DashboardComponent implements OnInit{
     this.infoGeral.tarefasFechadas = this.datasetTarefasFechadas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
     this.infoGeral.tarefasAbertas = this.datasetTarefasAbertas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
     this.infoGeral.porcentagemErroTeste = `${(this.infoGeral.erroTeste * this.infoGeral.enviadasTeste) / 100}%`
+    this.infoGeral.novasTarefas = this.datasetNovasTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
 
     const totalHoras = this.datasetHorasFechadas.reduce((acumulado, hora) => {
       const [h, m] = hora.split(":").map(Number);
@@ -206,10 +226,10 @@ export class DashboardComponent implements OnInit{
 
   definirGraficoTarefasAbertasFechadas() {
     this.dataGraficoTarefasAbertasFechadas = {
-      labels: ['Abertas', 'Fechadas'],
+      labels: ['Novas', 'Fechadas'],
       datasets: [
         {
-          data: [this.infoGeral.tarefasAbertas, this.infoGeral.tarefasFechadas],
+          data: [this.infoGeral.novasTarefas, this.infoGeral.tarefasFechadas],
           backgroundColor: [CoresEnum.LARANJA1, CoresEnum.VERDE1]
         }
       ]
@@ -232,6 +252,8 @@ export class DashboardComponent implements OnInit{
           data: [...datasetHorasDecimais],
           borderColor: CoresEnum.AZUL2,
           borderWidth: 3,
+          pointRadius: 5,
+          pointBorderWidth: 2,
           fill: false,
         },
         {
@@ -266,6 +288,27 @@ export class DashboardComponent implements OnInit{
         }
       }
     }
+
+  }
+
+  definirGraficoSetoresRadar() {
+    this.dataGraficoSetoresRadar = {
+      labels: ['Novas', 'Erros no Teste', 'Enviadas para Teste', 'Tarefas Fechadas'],
+      datasets: [
+        {
+          data: this.datasetNovasTarefas
+        }
+      ]
+    }
+
+    for(let i of this.datasetSetores) {
+      this.dataGraficoSetoresRadar.datasets.push({
+        label: "",
+        data: []
+      })
+    }
+
+
 
   }
 

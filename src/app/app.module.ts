@@ -23,6 +23,7 @@ import { TopbarComponent } from './shared/components/topbar/topbar.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FilterComponent } from './shared/components/filter/filter.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FilterComponent } from './shared/components/filter/filter.component';
     AvatarModule,
     AvatarGroupModule,
     CheckboxModule,
-    MultiSelectModule
+    MultiSelectModule,
+    TooltipModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,6 +1,23 @@
 <app-filter (dataOutput)="tratamentoDados($event)"></app-filter>
 
-<h3>Informações Gerais</h3>
+<div class="content-beetwen">
+  <h3>Informações Gerais</h3>
+  <button pButton
+    icon="pi pi-info-circle"
+    class="btn-info"
+    pTooltip="Tarefas Abertas: ;
+    Tarefas Fechadas: ;
+    Novas Tarefas: ;
+    Enviadas para Teste: ;
+    Erros no Teste: ;
+    % Erros: ;
+    Horas Totais: .
+    "
+    tooltipStyleClass="tooltip-info"
+    tooltipPosition="left">
+  </button>
+
+</div>
 <div class="grid ui-fluid">
   <div class="col-4">
     <span class="span-info-gerais grid ui-fluid">
@@ -74,7 +91,7 @@
   </div>
   <div class="col-1"></div>
   <div class="col-5">
-    <h4>Tarefas Abertas | Fechadas</h4>
+    <h4>Tarefas Novas | Fechadas</h4>
     <p-chart type="doughnut" [data]="dataGraficoTarefasAbertasFechadas" [options]="optionsGraficoTarefasAbertasFechadas" [height]="'400'"></p-chart>
   </div>
   <div class="col-6 mt-20">
@@ -83,6 +100,15 @@
   </div>
   <div class="col-1"></div>
   <div class="col-5 mt-20">
+
+  </div>
+  <div class="col-6 mt-20">
+    <h4>Setores: Radar</h4>
+    <p-chart type="radar" [data]="dataGraficoSetoresRadar" [options]="optionsGraficoSetoresRadar" [height]="'400'"></p-chart>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-5 mt-20">
+    <h4>Setores: Linha Horizontal</h4>
   </div>
 
 </div>
