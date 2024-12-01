@@ -6,4 +6,8 @@ export class TarefasDto {
   novasTarefas!: number;
   tarefasAbertas!: number;
   tarefasFechadas!: number;
+  qtdeNivelBaixoFechadas!: number;
+  qtdeNivelMedioFechadas!: number;
+  qtdeNivelAltoFechadas!: number;
+  qtdeNivelProjetoFechadas!: number;
 }

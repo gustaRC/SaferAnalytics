@@ -5,13 +5,13 @@
   <button pButton
     icon="pi pi-info-circle"
     class="btn-info"
-    pTooltip="Tarefas Abertas: ;
-    Tarefas Fechadas: ;
-    Novas Tarefas: ;
-    Enviadas para Teste: ;
-    Erros no Teste: ;
-    % Erros: ;
-    Horas Totais: .
+    pTooltip="Tarefas Abertas: tarefas totais;
+    Tarefas Fechadas: tarefas finalizadas completamente;
+    Novas Tarefas: tarefas criadas;
+    Enviadas para Teste: tarefas enviadas para validação;
+    Erros no Teste: tarefas retornadas com erro na validação;
+    % Erros: porcentagem de erro relacionado as tarefas enviadas para teste;
+    Horas Totais: horas trabalhadas (contabilizão somente depois de fechadas).
     "
     tooltipStyleClass="tooltip-info"
     tooltipPosition="left">
@@ -19,63 +19,113 @@
 
 </div>
 <div class="grid ui-fluid">
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">Tarefas Abertas:</label>
+      <label class="col-6">Tarefas Abertas:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-padrao col-7"
+      class="color-padrao col-6"
       [(ngModel)]="infoGeral.tarefasAbertas"
       disabled>
     </span>
   </div>
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">Enviadas para Teste:</label>
+      <label class="col-6">Enviadas para Teste:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-padrao col-7 "
+      class="color-padrao col-6 "
       [(ngModel)]="infoGeral.enviadasTeste"
       disabled>
     </span>
   </div>
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">Erros no Teste:</label>
+      <label class="col-6">Erros no Teste:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-negativa col-7"
+      class="color-negativa col-6"
       [(ngModel)]="infoGeral.erroTeste"
       disabled>
     </span>
   </div>
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">Tarefas Fechadas:</label>
+      <label class="col-6">Tarefas Fechadas:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-padrao col-7"
+      class="color-padrao col-6"
       [(ngModel)]="infoGeral.tarefasFechadas"
       disabled>
     </span>
   </div>
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">Horas Totais:</label>
+      <label class="col-6">Horas Totais:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-padrao col-7"
+      class="color-padrao col-6"
       [(ngModel)]="infoGeral.horasTarefasFechadas"
       disabled>
     </span>
   </div>
-  <div class="col-4">
+  <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-5">% Erros:</label>
+      <label class="col-6">% Erros:</label>
       <input pInputText
       type="text"
-      class="p-inputtext-sm color-negativa col-7"
+      class=" color-negativa col-6"
       [(ngModel)]="infoGeral.porcentagemErroTeste"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Novas Tarefas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.novasTarefas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Nivel Baixo Fechadas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.qtdeNivelBaixoFechadas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Nivel Médio Fechadas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.qtdeNivelMedioFechadas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Nivel Alto Fechadas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.qtdeNivelAltoFechadas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Tarefas Projetos Fechadas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.qtdeNivelProjetoFechadas"
       disabled>
     </span>
   </div>
@@ -85,29 +135,29 @@
 
 <h3>Gráficos</h3>
 <div class="grid ui-fluid pl-10">
-  <div class="col-6">
+  <div class="col-12 md:col-6">
     <h4>Tarefas para Teste | Erro no teste | Fechadas</h4>
     <p-chart type="bar" [data]="dataGraficoTarefasTesteErroFechada" [options]="optionsGraficoTarefasTesteErroFechada" [height]="'400'"></p-chart>
   </div>
   <div class="col-1"></div>
-  <div class="col-5">
+  <div class="col-12 md:col-5">
     <h4>Tarefas Novas | Fechadas</h4>
     <p-chart type="doughnut" [data]="dataGraficoTarefasAbertasFechadas" [options]="optionsGraficoTarefasAbertasFechadas" [height]="'400'"></p-chart>
   </div>
-  <div class="col-6 mt-20">
+  <div class="col-12 md:col-6 mt-20">
     <h4>Horas Trabalhadas</h4>
     <p-chart type="line" [data]="dataGraficoHorasTrabalhadas" [options]="optionsGraficoHorasTrabalhadas" [height]="'400'"></p-chart>
   </div>
   <div class="col-1"></div>
-  <div class="col-5 mt-20">
+  <div class="col-12 md:col-5 mt-20">
 
   </div>
-  <div class="col-6 mt-20">
+  <div class="col-12 md:col-6 mt-20">
     <h4>Setores: Radar</h4>
     <p-chart type="radar" [data]="dataGraficoSetoresRadar" [options]="optionsGraficoSetoresRadar" [height]="'400'"></p-chart>
   </div>
   <div class="col-1"></div>
-  <div class="col-5 mt-20">
+  <div class="col-12 md:col-5 mt-20">
     <h4>Setores: Linha Horizontal</h4>
   </div>
 
