@@ -191,7 +191,7 @@ export class DashboardComponent implements OnInit{
     this.infoGeral.tarefasFechadas = this.datasetTarefasFechadas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.tarefasAbertas = this.datasetTarefasAbertas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.porcentagemErroTeste = `${(this.infoGeral.erroTeste * this.infoGeral.enviadasTeste) / 100}%`
-    this.infoGeral.novasTarefas = this.datasetNovasTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
+    this.infoGeral.novasTarefas = this.datasetNovasTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.qtdeNivelBaixoFechadas = this.datasetBaixaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.qtdeNivelMedioFechadas = this.datasetMediaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.qtdeNivelAltoFechadas = this.datasetAltaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);

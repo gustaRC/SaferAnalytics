@@ -47,19 +47,36 @@ export class FilterComponent implements OnInit{
 
         this.emitirDados();
 
-        this.definirSetoresInput();
-        this.definirFuncionariosInput();
+        this.definirSetoresInput(this.dataSetores);
+        this.definirFuncionariosInput(this.dataSetores);
+        this.definirAnosDisponiveis(this.dataSetores);
       },
       error: err => this.sweetAlert.error(err),
       complete: () => this.sweetAlert.close()
     })
   }
 
-  definirSetoresInput() {
+  definirAnosDisponiveis(data: SetorDto[]) {
+    const totalAnos: number[] = [];
+
+    data.forEach(set => {
+      set.funcionarios.forEach(func => {
+        func.tarefasPeriodo.forEach(per => {
+          totalAnos.push(per.ano)
+        })
+      })
+    })
+
+    this.listaAnosDisponiveis = [];
+    totalAnos.map(ano => !this.listaAnosDisponiveis.includes(ano) && this.listaAnosDisponiveis.push(ano))
+
+  }
+
+  definirSetoresInput(data: SetorDto[]) {
     this.listaSetorInput = [];
     this.setoresSelecionados = [];
 
-    this.dataSetores.forEach(set => {
+    data.forEach(set => {
       this.listaSetorInput.push({nome: set.setor, id: set.id})
     })
     this.setoresSelecionados = this.listaSetorInput;
@@ -82,11 +99,11 @@ export class FilterComponent implements OnInit{
     // console.log('datasetores', this.dataSetores)
     // this.consoleListaSetor()
 
-    this.definirFuncionariosInput();
+    this.definirFuncionariosInput(this.dataSetores);
     this.emitirDados();
   }
 
-  definirFuncionariosInput() {
+  definirFuncionariosInput(data: SetorDto[]) {
     this.listaFuncionarioInput = [];
     this.funcionariosSelecionados = [];
 

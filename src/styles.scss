@@ -66,10 +66,22 @@ main {
   border-color: $azul-2;
 }
 
+.btn-pequeno {
+  font-size: 14px;
+  padding: 5px 10px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
 .btn-default {
   background-color: $azul-1;
   color: white;
   border-color: $azul-2;
+
+  &:hover {
+    transition: 0.1s;
+    filter: brightness(0.9);
+  }
 }
 
 .centralizar {
@@ -137,8 +149,8 @@ div:where(.swal2-container) h2:where(.swal2-title) {
 }
 
 .button-secondary {
-  color: $azul-escuro;
-  background: #fafcfd;
+  color: white;
+  background: $cinza-0;
   border: 1px solid #f1f1f1;
   cursor: pointer;
   transition: 0.1s;
@@ -156,6 +168,11 @@ div:where(.swal2-container) h2:where(.swal2-title) {
   background-color: $azul-1;
   border-color: whitesmoke;
   cursor: auto;
+
+  &:hover {
+    transition: 0.1s;
+    filter: brightness(0.9);
+  }
 }
 
 .tooltip-info {
@@ -189,4 +206,9 @@ div:where(.swal2-container) h2:where(.swal2-title) {
   padding: 0.4rem 0;
   padding-bottom: 0;
   font-size: 14px;
+}
+
+p-checkbox .p-checkbox-box.p-highlight {
+  border-color: $azul-0;
+  background: $azul-0;
 }

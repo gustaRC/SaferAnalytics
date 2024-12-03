@@ -5,7 +5,7 @@
       <button
         pButton
         label="Selecionar Todos"
-        style="font-size: 14px; padding: 5px 10px; font-weight: 400; margin-right: 10px;"
+        class="btn-pequeno button-secondary"
         [disabled]="anosSelecionados.length == listaAnosDisponiveis.length"
         (click)="selecionarTodosAnos()"
       ></button>
@@ -58,4 +58,13 @@
   </div>
 
 </div>
+<!-- <div class="grid ui-fluid">
+  <div class="col-12 md:col-7"></div>
+  <button pButton label="Redefenir Filtro" class="col-12 md:col-2"></button>
+
+  <div class="col-12 md:col-1"></div>
+  <button pButton label="Buscar" class="col-12 md:col-2"></button>
+</div> -->
+
+
 <hr>
