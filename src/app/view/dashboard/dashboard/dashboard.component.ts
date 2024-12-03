@@ -44,6 +44,9 @@ export class DashboardComponent implements OnInit{
   dataGraficoHorasTrabalhadas!: ChartData;
   optionsGraficoHorasTrabalhadas!: ChartOptions;
 
+  dataGraficoNivelTarefas!: ChartData;
+  optionsGraficoNivelTarefas!: ChartOptions;
+
   dataGraficoSetoresRadar!: ChartData;
   optionsGraficoSetoresRadar!: ChartOptions;
 
@@ -82,6 +85,7 @@ export class DashboardComponent implements OnInit{
     this.definirGraficoTarefasTesteErrosFechada();
     this.definirGraficoTarefasAbertasFechadas();
     this.definirGraficoHorasTrabalhadas();
+    this.definirGraficoNivelTarefas();
     this.definirGraficoSetoresRadar();
   }
 
@@ -320,6 +324,69 @@ export class DashboardComponent implements OnInit{
             },
           }
         }
+      }
+    }
+
+  }
+
+  definirGraficoNivelTarefas() {
+    this.dataGraficoNivelTarefas = {
+      labels: [...this.mesesDisponiveis],
+      datasets: [
+        {
+          label: 'Baixo',
+          data: this.datasetBaixaTarefas,
+          backgroundColor: CoresEnum.AZUL1,
+          borderColor: CoresEnum.AZUL2,
+        },
+        {
+          label: 'Média',
+          data: this.datasetMediaTarefas,
+          backgroundColor: CoresEnum.AMARELO1,
+          borderColor: CoresEnum.AMARELO2,
+        },
+        {
+          label: 'Alta',
+          data: this.datasetAltaTarefas,
+          backgroundColor: CoresEnum.VERM1,
+          borderColor: CoresEnum.VERM2,
+        },
+        {
+          label: 'Projeto',
+          data: this.datasetProjetoTarefas,
+          backgroundColor: CoresEnum.AZULADO1,
+          borderColor: CoresEnum.AZULADO2,
+        },
+      ]
+    }
+
+    this.optionsGraficoNivelTarefas = {
+      indexAxis: 'y',
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+          legend: {
+              labels: {
+                  color: CoresEnum.CINZA3
+              }
+          }
+      },
+      scales: {
+          x: {
+            ticks: {
+              font: {
+                weight: 500
+              }
+            },
+            grid: {
+              color: CoresEnum.CINZA1,
+            }
+          },
+          y: {
+            grid: {
+              color: CoresEnum.CINZA1,
+            }
+          }
       }
     }
 
