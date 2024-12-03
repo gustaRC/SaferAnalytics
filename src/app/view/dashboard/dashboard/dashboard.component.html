@@ -31,6 +31,16 @@
   </div>
   <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
+      <label class="col-6">Novas Tarefas:</label>
+      <input pInputText
+      type="text"
+      class="color-padrao col-6"
+      [(ngModel)]="infoGeral.novasTarefas"
+      disabled>
+    </span>
+  </div>
+  <div class="col-12 md:col-4">
+    <span class="span-info-gerais grid ui-fluid">
       <label class="col-6">Enviadas para Teste:</label>
       <input pInputText
       type="text"
@@ -81,11 +91,11 @@
   </div>
   <div class="col-12 md:col-4">
     <span class="span-info-gerais grid ui-fluid">
-      <label class="col-6">Novas Tarefas:</label>
+      <label class="col-6">Tarefas Projetos Fechadas:</label>
       <input pInputText
       type="text"
       class="color-padrao col-6"
-      [(ngModel)]="infoGeral.novasTarefas"
+      [(ngModel)]="infoGeral.qtdeNivelProjetoFechadas"
       disabled>
     </span>
   </div>
@@ -116,16 +126,6 @@
       type="text"
       class="color-padrao col-6"
       [(ngModel)]="infoGeral.qtdeNivelAltoFechadas"
-      disabled>
-    </span>
-  </div>
-  <div class="col-12 md:col-4">
-    <span class="span-info-gerais grid ui-fluid">
-      <label class="col-6">Tarefas Projetos Fechadas:</label>
-      <input pInputText
-      type="text"
-      class="color-padrao col-6"
-      [(ngModel)]="infoGeral.qtdeNivelProjetoFechadas"
       disabled>
     </span>
   </div>

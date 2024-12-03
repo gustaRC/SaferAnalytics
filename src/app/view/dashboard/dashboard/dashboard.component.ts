@@ -28,6 +28,10 @@ export class DashboardComponent implements OnInit{
   datasetTarefasFechadas!: number[];
   datasetTarefasAbertas!: number[];
   datasetNovasTarefas!: number[];
+  datasetBaixaTarefas!: number[];
+  datasetMediaTarefas!: number[];
+  datasetAltaTarefas!: number[];
+  datasetProjetoTarefas!: number[];
   datasetHorasFechadas!: string[];
   datasetSetores!: DatasetSetores[];
 
@@ -63,6 +67,10 @@ export class DashboardComponent implements OnInit{
     this.datasetTarefasAbertas = [];
     this.datasetHorasFechadas = [];
     this.datasetNovasTarefas = [];
+    this.datasetBaixaTarefas = [];
+    this.datasetMediaTarefas = [];
+    this.datasetAltaTarefas = [];
+    this.datasetProjetoTarefas = [];
   }
 
   tratamentoDados(event: SetorDto[]) {
@@ -90,6 +98,10 @@ export class DashboardComponent implements OnInit{
     const arrFechada: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrAbertas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrNovas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
+    const arrBaixas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
+    const arrMedias: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
+    const arrAltas: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
+    const arrProjetos: number[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
     const arrHoras: string[][] = [[], [], [], [], [], [], [], [], [], [], [], []];
 
     this.listaFuncionarios.forEach(func => {
@@ -106,6 +118,10 @@ export class DashboardComponent implements OnInit{
               arrFechada[index].push(mes.tarefas.tarefasFechadas);
               arrAbertas[index].push(mes.tarefas.tarefasAbertas);
               arrNovas[index].push(mes.tarefas.novasTarefas);
+              arrBaixas[index].push(mes.tarefas.qtdeNivelBaixoFechadas);
+              arrMedias[index].push(mes.tarefas.qtdeNivelMedioFechadas);
+              arrAltas[index].push(mes.tarefas.qtdeNivelAltoFechadas);
+              arrProjetos[index].push(mes.tarefas.qtdeNivelProjetoFechadas);
               arrHoras[index].push(mes.tarefas.horasTarefasFechadas);
             }
           }
@@ -115,24 +131,40 @@ export class DashboardComponent implements OnInit{
     })
 
     arrTeste.map(qtdeTarefas => {
-      const valorTotal = qtdeTarefas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      const valorTotal = qtdeTarefas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
       qtdeTarefas.length > 0 && this.datasetEnviadoTeste.push(valorTotal);
     });
     arrErro.map(qtdeErros => {
-      const valorTotal = qtdeErros.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      const valorTotal = qtdeErros.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
       qtdeErros.length > 0 && this.datasetErroTeste.push(valorTotal);
     });
     arrFechada.map(qtdeFechadas => {
-      const valorTotal = qtdeFechadas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      const valorTotal = qtdeFechadas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
       qtdeFechadas.length > 0 && this.datasetTarefasFechadas.push(valorTotal);
     });
     arrAbertas.map(qtdeAbertas => {
-      const valorTotal = qtdeAbertas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      const valorTotal = qtdeAbertas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
       qtdeAbertas.length > 0 && this.datasetTarefasAbertas.push(valorTotal);
     });
     arrNovas.map(qtdeNovas => {
-      const valorTotal = qtdeNovas.reduce((acumulador, tarefaAtual) => acumulador + tarefaAtual, 0);
+      const valorTotal = qtdeNovas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
       qtdeNovas.length > 0 && this.datasetNovasTarefas.push(valorTotal);
+    });
+    arrBaixas.map(qtdeBaixas => {
+      const valorTotal = qtdeBaixas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
+      qtdeBaixas.length > 0 && this.datasetBaixaTarefas.push(valorTotal);
+    });
+    arrMedias.map(qtdeMedias => {
+      const valorTotal = qtdeMedias.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
+      qtdeMedias.length > 0 && this.datasetMediaTarefas.push(valorTotal);
+    });
+    arrAltas.map(qtdeAltas => {
+      const valorTotal = qtdeAltas.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
+      qtdeAltas.length > 0 && this.datasetAltaTarefas.push(valorTotal);
+    });
+    arrProjetos.map(qtdeProjeto => {
+      const valorTotal = qtdeProjeto.reduce((acumulador, tarefaAtual) => acumulador + (tarefaAtual == null || tarefaAtual == undefined ? 0 : tarefaAtual), 0);
+      qtdeProjeto.length > 0 && this.datasetProjetoTarefas.push(valorTotal);
     });
     arrHoras.map(qtdeHoras => {
       const valorTotal = qtdeHoras.reduce((acumulador, hora) => {
@@ -150,12 +182,16 @@ export class DashboardComponent implements OnInit{
   }
 
   definirInfoGerais() {
-    this.infoGeral.enviadasTeste = this.datasetEnviadoTeste.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
-    this.infoGeral.erroTeste = this.datasetErroTeste.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
-    this.infoGeral.tarefasFechadas = this.datasetTarefasFechadas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
-    this.infoGeral.tarefasAbertas = this.datasetTarefasAbertas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
+    this.infoGeral.enviadasTeste = this.datasetEnviadoTeste.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.erroTeste = this.datasetErroTeste.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.tarefasFechadas = this.datasetTarefasFechadas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.tarefasAbertas = this.datasetTarefasAbertas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
     this.infoGeral.porcentagemErroTeste = `${(this.infoGeral.erroTeste * this.infoGeral.enviadasTeste) / 100}%`
     this.infoGeral.novasTarefas = this.datasetNovasTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 1);
+    this.infoGeral.qtdeNivelBaixoFechadas = this.datasetBaixaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.qtdeNivelMedioFechadas = this.datasetMediaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.qtdeNivelAltoFechadas = this.datasetAltaTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+    this.infoGeral.qtdeNivelProjetoFechadas = this.datasetProjetoTarefas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
     const totalHoras = this.datasetHorasFechadas.reduce((acumulado, hora) => {
       const [h, m] = hora.split(":").map(Number);
@@ -164,8 +200,6 @@ export class DashboardComponent implements OnInit{
     const horasInt = Math.floor(totalHoras);
     const minutos = Math.round((totalHoras - horasInt) * 60);
     this.infoGeral.horasTarefasFechadas = `${String(horasInt).padStart(2, '0')}:${String(minutos).padStart(2, '0')}`;
-
-    console.log('infogeral', this.infoGeral)
   }
 
   definirGraficoTarefasTesteErrosFechada() {
