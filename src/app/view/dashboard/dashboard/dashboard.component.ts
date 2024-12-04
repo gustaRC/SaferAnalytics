@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit{
 
   tratamentoDados(event: SetorDto[]) {
     this.listaDados = event
-    console.log('lista crua', this.listaDados)
+    // console.log('lista crua', this.listaDados);
 
     this.atribuirVariaveisData();
 

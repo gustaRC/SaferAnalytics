@@ -42,7 +42,7 @@ export class FilterComponent implements OnInit{
     this.setoresService.getSetores()
     .subscribe({
       next: resp => {
-        this.dataSetores = resp;//MANIPULAR
+        this.dataSetores = JSON.parse(JSON.stringify(resp));//MANIPULAR
         this.listaSetores$.next([...resp])//BACKUP
 
         this.emitirDados();
@@ -58,6 +58,7 @@ export class FilterComponent implements OnInit{
 
   definirAnosDisponiveis(data: SetorDto[]) {
     const totalAnos: number[] = [];
+    this.listaAnosDisponiveis = [];
 
     data.forEach(set => {
       set.funcionarios.forEach(func => {
@@ -69,8 +70,46 @@ export class FilterComponent implements OnInit{
 
     this.listaAnosDisponiveis = [];
     totalAnos.map(ano => !this.listaAnosDisponiveis.includes(ano) && this.listaAnosDisponiveis.push(ano))
+    this.anosSelecionados = this.listaAnosDisponiveis;
+  }
+
+  tratarAnosSelecionados() {
+    this.listaSetores$.subscribe(
+      resp => {
+        this.dataSetores.map(set => {
+          set.funcionarios.forEach(func => {
+            func.tarefasPeriodo = [];
+          })
+        })
+
+        console.log('resp',resp)
+        console.log('datasetores',this.dataSetores)
+
+        resp.forEach(set => {
+
+          set.funcionarios.forEach(func => {
+            func.tarefasPeriodo.forEach(tarPeriodo => {
+
+              this.anosSelecionados.forEach(ano => {
+                ano == tarPeriodo.ano
+              })
+
+            })
+          })
+
+        })
+
+        // this.dataSetores = resp;
+      }
+    )
+
+    // this.definirFuncionariosInput(this.dataSetores);
+    // this.emitirDados();
+
+
 
   }
+
 
   definirSetoresInput(data: SetorDto[]) {
     this.listaSetorInput = [];
@@ -85,21 +124,19 @@ export class FilterComponent implements OnInit{
   tratarSetoresSelecionados() {
     this.listaSetores$.subscribe(
       resp => {
-        const arrSet: SetorDto[] = [];
+        this.dataSetores = [];
 
         resp.forEach(set => {
           this.setoresSelecionados.forEach(setS => {
-            setS.id == set.id && arrSet.push(set);
+            setS.id == set.id && this.dataSetores.push(set);
           })
         })
 
-        this.dataSetores = arrSet;
       }
     )
-    // console.log('datasetores', this.dataSetores)
-    // this.consoleListaSetor()
 
     this.definirFuncionariosInput(this.dataSetores);
+    this.definirAnosDisponiveis(this.dataSetores);
     this.emitirDados();
   }
 
@@ -114,38 +151,10 @@ export class FilterComponent implements OnInit{
     })
     this.funcionariosSelecionados = this.listaFuncionarioInput;
 
-    // console.log('datasetores', this.dataSetores)
-    // this.consoleListaSetor()
   }
 
   tratarFuncionariosSelecionados() {
-    // console.log('ANTES', this.dataSetores);
-    // this.consoleListaSetor();
-
-    this.listaSetores$.subscribe(
-      resp => {
-        // console.log('funcionario selecionados', this.funcionariosSelecionados);
-        const dataSetoresCopia = [...resp];
-
-        this.funcionariosSelecionados.forEach(funcSelec => {
-          dataSetoresCopia.forEach(set => {
-            const arrFunc: FuncionarioDto[] = [];
-
-            set.funcionarios.map(func => {
-              if (funcSelec.id == func.id) {
-                arrFunc.push(func);
-              }
-              // console.log('aoo', arrFunc)
-            })
-
-            set.funcionarios = arrFunc; // Altera a cópia
-          })
-        })
-
-        // console.log('datasetores', this.dataSetores)
-        // this.consoleListaSetor()
-      }
-    )
+    const dadosSetores: SetorDto[] = [];
   }
 
   consoleListaSetor() {
