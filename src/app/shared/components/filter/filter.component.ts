@@ -15,9 +15,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class FilterComponent implements OnInit{
 
   @Output() dataOutput = new EventEmitter<any>()
-  private listaSetores$ = new BehaviorSubject<SetorDto[]>([]);
 
   dataSetores: SetorDto[] = [];
+  listaSetoresDump: SetorDto[] = [];
   listaSetorInput: TipoGenericoDto[] = [];
   setoresSelecionados: TipoGenericoDto[] = [];
 
@@ -42,8 +42,8 @@ export class FilterComponent implements OnInit{
     this.setoresService.getSetores()
     .subscribe({
       next: resp => {
-        this.dataSetores = JSON.parse(JSON.stringify(resp));//MANIPULAR
-        this.listaSetores$.next([...resp])//BACKUP
+        this.dataSetores = JSON.parse(JSON.stringify(resp)); //MANIPULAR
+        this.listaSetoresDump = [...resp]; //BACKUP
 
         this.emitirDados();
 
@@ -74,24 +74,26 @@ export class FilterComponent implements OnInit{
   }
 
   tratarAnosSelecionados() {
-    this.listaSetores$.subscribe(
-      resp => {
-        this.dataSetores.map(set => {
+        this.dataSetores.map(set => { //FUNCIONARIOS == []
           set.funcionarios.forEach(func => {
             func.tarefasPeriodo = [];
           })
         })
 
-        console.log('resp',resp)
-        console.log('datasetores',this.dataSetores)
 
-        resp.forEach(set => {
-
+        this.listaSetoresDump.forEach(set => {
           set.funcionarios.forEach(func => {
             func.tarefasPeriodo.forEach(tarPeriodo => {
 
-              this.anosSelecionados.forEach(ano => {
-                ano == tarPeriodo.ano
+              const funcProvisorio = func;
+              funcProvisorio.tarefasPeriodo = [];
+
+              this.anosSelecionados.forEach(anoS => {
+                anoS == tarPeriodo.ano && funcProvisorio.tarefasPeriodo.push(tarPeriodo)
+              })
+
+                this.dataSetores.forEach(dSet => {
+
               })
 
             })
@@ -99,16 +101,15 @@ export class FilterComponent implements OnInit{
 
         })
 
-        // this.dataSetores = resp;
-      }
-    )
+        console.log('datasetores',this.dataSetores)
 
-    // this.definirFuncionariosInput(this.dataSetores);
-    // this.emitirDados();
+        console.log('listaSetoresDump',this.listaSetoresDump)
 
-
-
+        // this.definirFuncionariosInput(this.dataSetores);
+        this.emitirDados();
   }
+
+
 
 
   definirSetoresInput(data: SetorDto[]) {
@@ -122,18 +123,13 @@ export class FilterComponent implements OnInit{
   }
 
   tratarSetoresSelecionados() {
-    this.listaSetores$.subscribe(
-      resp => {
-        this.dataSetores = [];
+    this.dataSetores = [];
 
-        resp.forEach(set => {
-          this.setoresSelecionados.forEach(setS => {
-            setS.id == set.id && this.dataSetores.push(set);
-          })
-        })
-
-      }
-    )
+    this.listaSetoresDump.forEach(set => {
+      this.setoresSelecionados.forEach(setS => {
+        setS.id == set.id && this.dataSetores.push(set);
+      })
+    })
 
     this.definirFuncionariosInput(this.dataSetores);
     this.definirAnosDisponiveis(this.dataSetores);
@@ -155,12 +151,6 @@ export class FilterComponent implements OnInit{
 
   tratarFuncionariosSelecionados() {
     const dadosSetores: SetorDto[] = [];
-  }
-
-  consoleListaSetor() {
-    this.listaSetores$.subscribe({
-      next: resp => console.log('listaSetores$ value',resp)
-    })
   }
 
   selecionarTodosAnos() {
